@@ -1,0 +1,175 @@
+<div class="step">
+    <h3 class="main_question"><strong>1/2</strong>Please answer the following questions:</h3>
+
+    <div class="row">
+
+        <div class="col-lg-10">
+            <div class="form-group select">
+                <label>What type of Loss?</label>
+                <div class="styled-select">
+                    <select class="required" id="loss_type" name="quote[loss_type]" onchange="showTypeOfLoseInput()">
+                      <option value="" selected>Select</option>
+                      <option value="Fire">Fire</option>
+                      <option value="Wind/Hail">Wind/Hail</option>
+                      <option value="Water">Water</option>
+                      <option value="Frozen Pipe">Frozen Pipe</option>
+                      <option value="Collapse">Collapse</option>
+                      <option value="Car into a dwelling">Car into a dwelling</option>
+                      <option value="Other">Other</option>
+                      <option value="Named Storm">Named Storm</option>
+                    </select>
+                </div>
+            </div><!-- /select-->
+
+            <div class="form-group">
+                <input type="text" id="other" name="quote[loss_type_desc]" class="form-control" placeholder="Enter other type of loss here">
+            </div>
+            <div class="form-group">
+                <input type="text" id="named-strom" name="quote[loss_type_desc]" class="form-control" placeholder="Enter Named Storm type of loss here">
+            </div>
+
+            <div class="form-group select">
+              <label>Date of Loss</label>
+              <div class="form-group">
+                <input type="date" id="loss_date" name="quote[loss_date]" max="<%= Date.today %>"  class="form-control" required>
+              </div>
+            </div>
+
+            <label>Property Type</label>
+
+            <div class="form-group radio_questions">
+                <label>1. Single family
+                    <input name="quote[property_type]" type="radio" value="Single family" class="icheck required">
+                </label>
+            </div>
+            <div class="form-group radio_questions">
+                <label>2. Multifamily
+                    <input name="quote[property_type]" type="radio" value="Multifamily" class="icheck required">
+                </label>
+            </div>
+            <div class="form-group radio_questions">
+                <label>3. Condo
+                    <input name="quote[property_type]" type="radio" value="Condo" class="icheck required">
+                </label>
+            </div>
+            <div class="form-group radio_questions">
+                <label>4. Commercial
+                    <input name="quote[property_type]" type="radio" value="Commercial" class="icheck required">
+                </label>
+            </div>
+            <div class="form-group radio_questions">
+                <label>5. Mix-use
+                    <input name="quote[property_type]" type="radio" value="Mix-use" class="icheck required">
+                </label>
+            </div>
+            <div class="form-group radio_questions">
+                <label>6. Other structure
+                    <input name="quote[property_type]" type="radio" value="Other structure" class="icheck required">
+                </label>
+            </div>
+
+            <div class="form-group select" id="other_unit_affected_form">
+                <label>Were other units effected?</label>
+                <div class="styled-select">
+                    <select name="quote[other_unit_affected]" id="other_unit_affected">
+                        <option value="" selected>Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div><!-- /select-->
+
+            <div class="form-group select">
+                <label>Location of Loss</label>
+                <div class="form-group">
+                    <input type="text" id="loss_location" name="quote[loss_location]" class="required form-control" placeholder="Enter your loss location here">
+                </div>
+            </div><!-- /col-sm-6 -->
+
+            <div class="form-group">
+              <label>Policy Limit<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
+              <div class="fileupload">
+                <input type="file" name="quote[policy_limit]" accept="application/pdf" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Insurance Estimate<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
+              <div class="fileupload">
+                <input type="file" name="quote[insurance_estimate]" accept="application/pdf" required>
+              </div>
+            </div>
+
+            <div class="form-group select">
+                <label>Was there damage outside of what your insurance company reported?</label>
+                <div class="styled-select">
+                    <select class="required" id="damage_outside_insurance" name="quote[damage_outside_insurance]" onchange="showSuplemenClaim()" >
+                        <option value="" selected>Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div><!-- /select-->
+        </div>
+    </div><!-- /row-->
+</div><!-- /step 3-->
+
+<script src="js/jquery-3.5.1.min.js"></script>
+
+<script>
+  function showTypeOfLoseInput() {
+    var loss_type = document.getElementById("loss_type").value;
+    if (loss_type == 'Other') {
+      document.getElementById("other").style.display = "block";
+      document.getElementById("other").required = true;
+      document.getElementById("named-strom").style.display = "none";
+      document.getElementById("named-strom").required = false;
+    }
+    if (loss_type == 'Named Storm') {
+      document.getElementById("other").style.display = "none";
+      document.getElementById("other").required = false;
+      document.getElementById("named-strom").style.display = "block";
+      document.getElementById("named-strom").required = true;
+    }
+    if (loss_type != 'Named Storm' && loss_type != 'Other') {
+      document.getElementById("other").style.display = "none";
+      document.getElementById("named-strom").style.display = "none";
+      document.getElementById("other").required = false;
+      document.getElementById("named-strom").required = false;
+    }
+  }
+
+  $('input[name="quote[property_type]"]').click(function(){
+    const properties = ['Condo', 'Multifamily', 'Commercial'];
+    if (properties.includes(this.value)) {
+      document.getElementById("other_unit_affected_form").style.display = "block";
+      document.getElementById("other_unit_affected").required = true;
+    } else {
+      document.getElementById("other_unit_affected_form").style.display = "none";
+      document.getElementById("other_unit_affected").required = false;
+    }
+  });
+
+  function initAutocomplete() {
+    lossLocationField = document.querySelector("#loss_location");
+    autocomplete = new google.maps.places.Autocomplete(lossLocationField);
+    lossLocationField.focus();
+  }
+
+  function showSuplemenClaim() {
+    var loss_type = document.getElementById("damage_outside_insurance").value;
+    if (loss_type == 'Yes') {
+      document.getElementById("sumplemental_claim").style.display = "block";
+      document.getElementById("sumplemental_claim").required = true;
+    } else {
+      document.getElementById("sumplemental_claim").style.display = "none";
+      document.getElementById("sumplemental_claim").required = false;
+    }
+  }
+</script>
+
+<style media="screen">
+  #other, #named-strom, #other_unit_affected_form, #sumplemental_claim, #sumplemental_room {
+    display: none;
+  }
+</style>

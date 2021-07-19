@@ -1,0 +1,41 @@
+<div class="tab-pane fade" id="tab_1">
+  <div class="subheader" id="quote"></div>
+  <div class="row">
+      <aside class="col-xl-3 col-lg-4">
+          <h2>Request a Quote and Compare prices!</h2>
+          <p class="lead">An mei sadipscing dissentiet, eos ea partem viderer facilisi.</p>
+          <ul class="list_ok">
+              <li>Delicata persecuti ei nec, et his minim omnium, aperiam placerat ea vis.</li>
+              <li>Suavitate vituperatoribus pro ad, cum in quis propriae abhorreant.</li>
+              <li>Aperiri deterruisset ei mea, sed cu laudem intellegat, eu mutat iuvaret voluptatum mei.</li>
+          </ul>
+      </aside><!-- /aside -->
+
+      <div class="col-xl-9 col-lg-8">
+          <div id="wizard_container">
+              <div id="top-wizard">
+                  <strong>Progress</strong>
+                  <div id="progressbar"></div>
+              </div><!-- /top-wizard -->
+
+              <%= form_tag({}, {id: :wrapped, method: :post, multipart: true}) do %>
+              <!-- <form name="example-1" id="wrapped" method="POST" enctype="multipart/form-data"> -->
+                  <input id="website" name="website" type="text" value=""><!-- Leave for security protection, read docs for details -->
+                  <div id="middle-wizard">
+
+                    <%= render "steps/step_1" %>
+                    <%= render "steps/step_2" %>
+
+                  </div><!-- /middle-wizard -->
+                  <div id="bottom-wizard">
+                      <button type="button" name="backward" class="backward">Backward </button>
+                      <button type="button" name="forward" class="forward">Forward</button>
+                      <button type="submit" name="process" class="submit">Submit</button>
+                  </div><!-- /bottom-wizard -->
+              <!-- </form> -->
+              <% end %>
+          </div><!-- /Wizard container -->
+
+      </div><!-- /col -->
+  </div><!-- /row -->
+</div><!-- /TAB 1:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
