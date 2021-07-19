@@ -9,43 +9,6 @@
 
 https://elements.envato.com/quote-quotation-or-survey-form-wizard-JPMK24
 
-### Clari Packages
-
-## SHOW CONTACT
-$Mc = $('#main_container');
-$Layer = $('.layer');
-$Mc.addClass("show_container")
-$Layer.addClass("layer-is-visible")
-$('#tab_3').addClass("active show");
-
-
-Quote
-- loss_type:string
-- loss_date:date
-- property_type:string
-- other_unit_affected:boolean
-- location:text
-- location_point:string
-- policy_limit:string
-- insurance_estimate:string
-- damage_outside_insurance:boolean
-- first_name:string
-- last_name:string
-- address:text
-- city:string
-- state:string
-- zipcode:string
-- phone:string
-- email:string
-- contact_preference:integer
-
-
-## video_fallback
-
-public/img/slides/slide_1.jpg
-
-1600x1067
-
 ### Requirement
 
 Stage 1 Questions:
@@ -75,3 +38,9 @@ the last 3 services are additional addons so mutiselect with them should be avai
 - Sumplemental Claim $199.99
 - 20 Min Consultation $129.99
 - Will Refer a Qualified Public Adjuster In your Area FREE
+
+if there is extra damage, we will ask them to pay for supplemental room
+
+If they click yes, we need to add "Room Name", "Room dimensions (L x W x H) and the abilit yto add more than one room
+
+Ok - also if on stage 1 "Is there room is missing" then on stage 2 they have the option for "supplemental claim" if this is not checked we will omit it

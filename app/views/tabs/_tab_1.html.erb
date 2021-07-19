@@ -18,22 +18,19 @@
                   <div id="progressbar"></div>
               </div><!-- /top-wizard -->
 
-              <%= form_tag({}, {id: :wrapped, method: :post, multipart: true}) do %>
-              <!-- <form name="example-1" id="wrapped" method="POST" enctype="multipart/form-data"> -->
-                  <input id="website" name="website" type="text" value=""><!-- Leave for security protection, read docs for details -->
-                  <div id="middle-wizard">
+            <%= form_tag(quotes_path, { method: :post, multipart: true }) do %>
+              <input id="website" name="website" type="text" value=""><!-- Leave for security protection, read docs for details -->
+              <div id="middle-wizard">
+                <%= render "steps/step_1" %>
+                <%= render "steps/step_2" %>
+              </div><!-- /middle-wizard -->
 
-                    <%= render "steps/step_1" %>
-                    <%= render "steps/step_2" %>
-
-                  </div><!-- /middle-wizard -->
-                  <div id="bottom-wizard">
-                      <button type="button" name="backward" class="backward">Backward </button>
-                      <button type="button" name="forward" class="forward">Forward</button>
-                      <button type="submit" name="process" class="submit">Submit</button>
-                  </div><!-- /bottom-wizard -->
-              <!-- </form> -->
-              <% end %>
+              <div id="bottom-wizard">
+                  <button type="button" name="backward" class="backward">Backward </button>
+                  <button type="button" name="forward" class="forward">Forward</button>
+                  <button type="submit" name="process" class="submit">Submit</button>
+              </div><!-- /bottom-wizard -->
+            <% end %>
           </div><!-- /Wizard container -->
 
       </div><!-- /col -->

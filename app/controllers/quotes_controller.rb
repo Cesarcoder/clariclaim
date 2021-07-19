@@ -1,7 +1,7 @@
 class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quote_params)
-    
+
     respond_to do |format|
       if @quote.save
         @quote.update_columns(addons_data: addons_params)
