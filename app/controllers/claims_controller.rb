@@ -1,15 +1,15 @@
-class QuotesController < ApplicationController
+class ClaimsController < ApplicationController
   def create
-    @quote = Quote.new(quote_params)
+    @claim = Claim.new(claim_params)
 
     respond_to do |format|
-      if @quote.save
-        @quote.update_columns(addons_data: addons_params)
-        format.html { redirect_to success_quotes_path, notice: "Quote was successfully created." }
-        format.json { render :show, status: :created, location: @quote }
+      if @claim.save
+        @claim.update_columns(addons_data: addons_params)
+        format.html { redirect_to success_claims_path, notice: "Claim was successfully created." }
+        format.json { render :show, status: :created, location: @claim }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @quote.errors, status: :unprocessable_entity }
+        format.json { render json: @claim.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -18,8 +18,8 @@ class QuotesController < ApplicationController
 
   private
     # Only allow a list of trusted parameters through.
-    def quote_params
-      params.require(:quote).permit(
+    def claim_params
+      params.require(:claim).permit(
         :loss_type, :loss_date, :loss_type_desc, :property_type,
         :other_unit_affected, :loss_location, :location, :location_point,
         :policy_limit, :insurance_estimate, :damage_outside_insurance,
@@ -30,13 +30,13 @@ class QuotesController < ApplicationController
     end
 
     def addons_params
-      ids = params[:quote].slice(:addons_101, :addons_102, :addons_103)
+      ids = params[:claim].slice(:addons_101, :addons_102, :addons_103)
                   .values.compact.map(&:to_i)
       rooms = []
-      params[:quote][:room_name].each_with_index do |name, index|
+      params[:claim][:room_name].each_with_index do |name, index|
         rooms << {
           name: name,
-          dimension: params[:quote][:room_dimension][index]
+          dimension: params[:claim][:room_dimension][index]
         }
       end if ids.include?(101)
 

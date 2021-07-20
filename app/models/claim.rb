@@ -1,4 +1,4 @@
-class Quote < ApplicationRecord
+class Claim < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   enum contact_preference: { phone: 0, email: 1 }

@@ -7,7 +7,7 @@
             <div class="form-group select">
                 <label>What type of Loss?</label>
                 <div class="styled-select">
-                    <select class="required" id="loss_type" name="quote[loss_type]" onchange="showTypeOfLoseInput()">
+                    <select class="required" id="loss_type" name="claim[loss_type]" onchange="showTypeOfLoseInput()">
                       <option value="" selected>Select</option>
                       <option value="Fire">Fire</option>
                       <option value="Wind/Hail">Wind/Hail</option>
@@ -22,16 +22,16 @@
             </div><!-- /select-->
 
             <div class="form-group">
-                <input type="text" id="other" name="quote[loss_type_desc]" class="form-control" placeholder="Enter other type of loss here">
+                <input type="text" id="other" name="claim[loss_type_desc]" class="form-control" placeholder="Enter other type of loss here">
             </div>
             <div class="form-group">
-                <input type="text" id="named-strom" name="quote[loss_type_desc]" class="form-control" placeholder="Enter Named Storm type of loss here">
+                <input type="text" id="named-strom" name="claim[loss_type_desc]" class="form-control" placeholder="Enter Named Storm type of loss here">
             </div>
 
             <div class="form-group select">
               <label>Date of Loss</label>
               <div class="form-group">
-                <input type="date" id="loss_date" name="quote[loss_date]" max="<%= Date.today %>"  class="form-control" required>
+                <input type="date" id="loss_date" name="claim[loss_date]" max="<%= Date.today %>"  class="form-control" required>
               </div>
             </div>
 
@@ -39,39 +39,39 @@
 
             <div class="form-group radio_questions">
                 <label>1. Single family
-                    <input name="quote[property_type]" type="radio" value="Single family" class="icheck required">
+                    <input name="claim[property_type]" type="radio" value="Single family" class="icheck required">
                 </label>
             </div>
             <div class="form-group radio_questions">
                 <label>2. Multifamily
-                    <input name="quote[property_type]" type="radio" value="Multifamily" class="icheck required">
+                    <input name="claim[property_type]" type="radio" value="Multifamily" class="icheck required">
                 </label>
             </div>
             <div class="form-group radio_questions">
                 <label>3. Condo
-                    <input name="quote[property_type]" type="radio" value="Condo" class="icheck required">
+                    <input name="claim[property_type]" type="radio" value="Condo" class="icheck required">
                 </label>
             </div>
             <div class="form-group radio_questions">
                 <label>4. Commercial
-                    <input name="quote[property_type]" type="radio" value="Commercial" class="icheck required">
+                    <input name="claim[property_type]" type="radio" value="Commercial" class="icheck required">
                 </label>
             </div>
             <div class="form-group radio_questions">
                 <label>5. Mix-use
-                    <input name="quote[property_type]" type="radio" value="Mix-use" class="icheck required">
+                    <input name="claim[property_type]" type="radio" value="Mix-use" class="icheck required">
                 </label>
             </div>
             <div class="form-group radio_questions">
                 <label>6. Other structure
-                    <input name="quote[property_type]" type="radio" value="Other structure" class="icheck required">
+                    <input name="claim[property_type]" type="radio" value="Other structure" class="icheck required">
                 </label>
             </div>
 
             <div class="form-group select" id="other_unit_affected_form">
                 <label>Were other units effected?</label>
                 <div class="styled-select">
-                    <select name="quote[other_unit_affected]" id="other_unit_affected">
+                    <select name="claim[other_unit_affected]" id="other_unit_affected">
                         <option value="" selected>Select</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -82,28 +82,28 @@
             <div class="form-group select">
                 <label>Location of Loss</label>
                 <div class="form-group">
-                    <input type="text" id="loss_location" name="quote[loss_location]" class="required form-control" placeholder="Enter your loss location here">
+                    <input type="text" id="loss_location" name="claim[loss_location]" class="required form-control" placeholder="Enter your loss location here">
                 </div>
             </div><!-- /col-sm-6 -->
 
             <div class="form-group">
               <label>Policy Limit<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
               <div class="fileupload">
-                <input type="file" name="quote[policy_limit]" accept="application/pdf" required>
+                <input type="file" name="claim[policy_limit]" accept="application/pdf" required>
               </div>
             </div>
 
             <div class="form-group">
               <label>Insurance Estimate<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
               <div class="fileupload">
-                <input type="file" name="quote[insurance_estimate]" accept="application/pdf" required>
+                <input type="file" name="claim[insurance_estimate]" accept="application/pdf" required>
               </div>
             </div>
 
             <div class="form-group select">
                 <label>Was there damage outside of what your insurance company reported?</label>
                 <div class="styled-select">
-                    <select class="required" id="damage_outside_insurance" name="quote[damage_outside_insurance]" onchange="showSuplemenClaim()" >
+                    <select class="required" id="damage_outside_insurance" name="claim[damage_outside_insurance]" onchange="showSuplemenClaim()" >
                         <option value="" selected>Select</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -139,7 +139,7 @@
     }
   }
 
-  $('input[name="quote[property_type]"]').click(function(){
+  $('input[name="claim[property_type]"]').click(function(){
     const properties = ['Condo', 'Multifamily', 'Commercial'];
     if (properties.includes(this.value)) {
       document.getElementById("other_unit_affected_form").style.display = "block";

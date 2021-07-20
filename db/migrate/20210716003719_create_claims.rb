@@ -1,6 +1,6 @@
-class CreateQuotes < ActiveRecord::Migration[6.1]
+class CreateClaims < ActiveRecord::Migration[6.1]
   def change
-    create_table :quotes do |t|
+    create_table :claims do |t|
       t.string  :loss_type
       t.text    :loss_type_desc
       t.string  :loss_location
@@ -24,6 +24,6 @@ class CreateQuotes < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    add_index :quotes, :package_id
+    add_index :claims, :package_id
   end
 end

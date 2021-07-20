@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_052239) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "quotes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "claims", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "loss_type"
     t.text "loss_type_desc"
     t.string "loss_location"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_052239) do
     t.integer "contact_preference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["package_id"], name: "index_quotes_on_package_id"
+    t.index ["package_id"], name: "index_claims_on_package_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

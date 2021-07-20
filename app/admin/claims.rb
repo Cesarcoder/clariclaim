@@ -1,4 +1,4 @@
-ActiveAdmin.register Quote do
+ActiveAdmin.register Claim do
   menu priority: 1
 
   actions :index, :show
@@ -11,8 +11,8 @@ ActiveAdmin.register Quote do
   index do
     id_column
     column :first_name
-    column :package do |quote|
-      quote.package_name
+    column :package do |claim|
+      claim.package_name
     end
     column :loss_type
     column :property_type
@@ -23,40 +23,40 @@ ActiveAdmin.register Quote do
 
   show do
     attributes_table do
-      row :loss_type do |quote|
-        quote.loss_type_formatted
+      row :loss_type do |claim|
+        claim.loss_type_formatted
       end
       row :loss_location
       # row :loss_location_point
       row :loss_date
       row :property_type
-      row :policy_limit do |quote|
+      row :policy_limit do |claim|
         link_to(
-          quote.policy_limit.filename, url_for(quote.policy_limit),
+          claim.policy_limit.filename, url_for(claim.policy_limit),
           target: :blank
         ) rescue ""
       end
-      row :insurance_estimate do |quote|
+      row :insurance_estimate do |claim|
         link_to(
-          quote.insurance_estimate.filename, url_for(quote.insurance_estimate),
+          claim.insurance_estimate.filename, url_for(claim.insurance_estimate),
           target: :blank
         ) rescue ""
       end
       row :other_unit_affected
       row :damage_outside_insurance
-      row :package do |quote|
-        quote.package_name
+      row :package do |claim|
+        claim.package_name
       end
-      row :addons do |quote|
+      row :addons do |claim|
         addons = ""
-        quote.addons.each do |addon|
+        claim.addons.each do |addon|
           addons = li addon.name
         end
         addons
       end
-      row :supplemental_claims do |quote|
+      row :supplemental_claims do |claim|
         rooms = ""
-        quote.supplemental_rooms.each do |room|
+        claim.supplemental_rooms.each do |room|
           rooms = li "#{room['name']} - #{room['dimension']}"
         end
         rooms

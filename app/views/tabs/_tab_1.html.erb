@@ -1,13 +1,15 @@
 <div class="tab-pane fade" id="tab_1">
-  <div class="subheader" id="quote"></div>
+  <div class="subheader" id="claim"></div>
   <div class="row">
       <aside class="col-xl-3 col-lg-4">
-          <h2>Request a Quote and Compare prices!</h2>
-          <p class="lead">An mei sadipscing dissentiet, eos ea partem viderer facilisi.</p>
+          <h2>THE DETAILS ARE OUR SPECIALITY ALONG WITH KNOWING YOUR INSURANCE CLAIM.</h2>
+          <p class="">We care about your claim along with your financial well-being. With insurance experts, consultants and industry leaders our state of the work programming and technology run reports to ensure your claim includes everything you are rightfully owed.
+Our only objective is to maximize your claim.</p>
+<p class="">Once we learn about your claim and we can start the process immediately.</p>
           <ul class="list_ok">
-              <li>Delicata persecuti ei nec, et his minim omnium, aperiam placerat ea vis.</li>
-              <li>Suavitate vituperatoribus pro ad, cum in quis propriae abhorreant.</li>
-              <li>Aperiri deterruisset ei mea, sed cu laudem intellegat, eu mutat iuvaret voluptatum mei.</li>
+              <li>Answer Easy Questions</li>
+              <li>Upload your Adjusters Figures</li>
+              <li>Review results</li>
           </ul>
       </aside><!-- /aside -->
 
@@ -18,7 +20,7 @@
                   <div id="progressbar"></div>
               </div><!-- /top-wizard -->
 
-            <%= form_tag(quotes_path, { method: :post, multipart: true }) do %>
+            <%= form_tag(claims_path, { method: :post, multipart: true }) do %>
               <input id="website" name="website" type="text" value=""><!-- Leave for security protection, read docs for details -->
               <div id="middle-wizard">
                 <%= render "steps/step_1" %>

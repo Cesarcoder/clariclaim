@@ -129,7 +129,7 @@
 		// PHPMailer text/html SMTP > phpmailer/quote_upload_phpmailer_smtp.php
 		// PHPMailer with html template > phpmailer/quote_upload_phpmailer_template.php
 		// PHPMailer with html template SMTP > phpmailer/quote_upload_phpmailer_template_smtp.php
-		$('form#wrapped').attr('action', '/quotes');
+		$('form#wrapped').attr('action', '/claims');
 		$("#wizard_container").wizard({
 			stepsWrapper: "#wrapped",
 			submit: ".submit",
