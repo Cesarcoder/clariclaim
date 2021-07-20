@@ -4,8 +4,10 @@ ActiveAdmin.register Claim do
   actions :index, :show
 
   filter :first_name
+  filter :package, collection: -> { Package.main }
   filter :loss_type
   filter :property_type
+  filter :loss_location
   filter :created_at
 
   index do
@@ -16,7 +18,7 @@ ActiveAdmin.register Claim do
     end
     column :loss_type
     column :property_type
-    column :other_unit_affected
+    column :loss_location
     column :created_at
     actions
   end
@@ -27,12 +29,11 @@ ActiveAdmin.register Claim do
         claim.loss_type_formatted
       end
       row :loss_location
-      # row :loss_location_point
       row :loss_date
       row :property_type
-      row :policy_limit do |claim|
+      row :declarations_page do |claim|
         link_to(
-          claim.policy_limit.filename, url_for(claim.policy_limit),
+          claim.declarations_page.filename, url_for(claim.declarations_page),
           target: :blank
         ) rescue ""
       end

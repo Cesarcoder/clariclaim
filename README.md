@@ -21,7 +21,7 @@ a. Single family, Multifamily, Condo, Commercial, Mix-use, other structure
 i. IF apartment/multifamily(additional dropdown appears with question “Were other units effected?” <radio yes/no> <====> "Other units effected" only shows up on condo, multifamily and commercial
 3
 4) Location of Loss (Google map api) <text>
-5) Policy Limit (or upload policy page)<file upload>
+5) Declarations Page(or upload policy page)<file upload> -> before it was Policy Limit
 6) Insurance Estimate <file upload>
 7) Was there damage outside of what your insurance company reported? (Radio yes/no IF Yes <text field>
 

@@ -22,7 +22,7 @@ class ClaimsController < ApplicationController
       params.require(:claim).permit(
         :loss_type, :loss_date, :loss_type_desc, :property_type,
         :other_unit_affected, :loss_location, :location, :location_point,
-        :policy_limit, :insurance_estimate, :damage_outside_insurance,
+        :declarations_page, :insurance_estimate, :damage_outside_insurance,
         :package_id, :addons_data,
         :first_name, :last_name, :address,
         :city, :state, :zipcode, :phone, :email, :contact_preference
