@@ -16,6 +16,19 @@ class ClaimsController < ApplicationController
 
   def success; end
 
+  def extract
+    render json: {
+       "claim_number":"TPPT84",
+       "company":"Seltser & Goldstein Public Adjusters",
+       "type_of_loss":"Water Damage",
+       "insured":"Billy & Katie S",
+       "estimate":"SILVA",
+       "estimator":"Tim Martino",
+       "email":"sample@email.com",
+       "phone":"123123123"
+    }
+  end
+
   private
     # Only allow a list of trusted parameters through.
     def claim_params
