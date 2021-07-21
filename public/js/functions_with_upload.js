@@ -155,7 +155,7 @@
 		$("#progressbar").progressbar();
 		$("#wizard_container").wizard({
 			afterSelect: function (event, state) {
-				$("#progressbar").progressbar("value", state.percentComplete);
+				$("#progressbar").progressbar("value", state.percentComplete - 50);
 				$("#location").text("(" + state.stepsComplete + "/" + state.stepsPossible + ")");
 			}
 		});
