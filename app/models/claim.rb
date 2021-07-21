@@ -42,6 +42,25 @@ class Claim < ApplicationRecord
     supplemental_claims.fetch('rooms') rescue []
   end
 
+  def extract!
+    require 'uri'
+    require 'net/http'
+
+    uri = URI(ENV['OCR_SERVICE_URL'])
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+
+    request = Net::HTTP::Post.new(uri.path)
+
+    puts "declarations_page.url"
+    puts declarations_page.url
+
+    request['file_url'] = declarations_page.url
+    response = https.request(request)
+
+    update_columns(meta: JSON.parse(response.body))
+  end
+
   private
 
   def loss_date_cannot_be_in_the_future

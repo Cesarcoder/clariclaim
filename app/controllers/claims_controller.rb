@@ -4,7 +4,10 @@ class ClaimsController < ApplicationController
 
     respond_to do |format|
       if @claim.save
+        # after save
         @claim.update_columns(addons_data: addons_params)
+        ExtractWorker.perform_async(@claim.id)
+
         format.html { redirect_to success_claims_path, notice: "Claim was successfully created." }
         format.json { render :show, status: :created, location: @claim }
       else
@@ -17,6 +20,7 @@ class ClaimsController < ApplicationController
   def success; end
 
   def extract
+    puts "extracted"
     render json: {
        "claim_number":"TPPT84",
        "company":"Seltser & Goldstein Public Adjusters",

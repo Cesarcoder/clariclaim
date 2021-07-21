@@ -20,6 +20,7 @@ class CreateClaims < ActiveRecord::Migration[6.1]
       t.string  :phone
       t.string  :email
       t.integer :contact_preference
+      t.json    :meta
 
       t.timestamps
     end

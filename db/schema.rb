@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_052239) do
     t.string "phone"
     t.string "email"
     t.integer "contact_preference"
+    t.json "meta"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["package_id"], name: "index_claims_on_package_id"

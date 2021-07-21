@@ -24,54 +24,70 @@ ActiveAdmin.register Claim do
   end
 
   show do
-    attributes_table do
-      row :loss_type do |claim|
-        claim.loss_type_formatted
-      end
-      row :loss_location
-      row :loss_date
-      row :property_type
-      row :declarations_page do |claim|
-        link_to(
-          claim.declarations_page.filename, url_for(claim.declarations_page),
-          target: :blank
-        ) rescue ""
-      end
-      row :insurance_estimate do |claim|
-        link_to(
-          claim.insurance_estimate.filename, url_for(claim.insurance_estimate),
-          target: :blank
-        ) rescue ""
-      end
-      row :other_unit_affected
-      row :damage_outside_insurance
-      row :package do |claim|
-        claim.package_name
-      end
-      row :addons do |claim|
-        addons = ""
-        claim.addons.each do |addon|
-          addons = li addon.name
+    columns do
+      column do
+        attributes_table do
+          row :loss_type do |claim|
+            claim.loss_type_formatted
+          end
+          row :loss_location
+          row :loss_date
+          row :property_type
+          row :declarations_page do |claim|
+            link_to(
+              claim.declarations_page.filename, url_for(claim.declarations_page),
+              target: :blank
+            ) rescue ""
+          end
+          row :insurance_estimate do |claim|
+            link_to(
+              claim.insurance_estimate.filename, url_for(claim.insurance_estimate),
+              target: :blank
+            ) rescue ""
+          end
+          row :other_unit_affected
+          row :damage_outside_insurance
+          row :package do |claim|
+            claim.package_name
+          end
+          row :addons do |claim|
+            addons = ""
+            claim.addons.each do |addon|
+              addons = li addon.name
+            end
+            addons
+          end
+          row :supplemental_claims do |claim|
+            rooms = ""
+            claim.supplemental_rooms.each do |room|
+              rooms = li "#{room['name']} - #{room['dimension']}"
+            end
+            rooms
+          end
+          row :first_name
+          row :last_name
+          row :address
+          row :city
+          row :state
+          row :zipcode
+          row :phone
+          row :email
+          row :contact_preference
+          row :created_at
         end
-        addons
       end
-      row :supplemental_claims do |claim|
-        rooms = ""
-        claim.supplemental_rooms.each do |room|
-          rooms = li "#{room['name']} - #{room['dimension']}"
+
+      column do
+        panel "Claim Meta" do
+          attributes_table_for claim do
+            claim&.meta&.each do |key, val|
+              row key.to_sym do
+                val
+              end
+            end
+          end
         end
-        rooms
-      end
-      row :first_name
-      row :last_name
-      row :address
-      row :city
-      row :state
-      row :zipcode
-      row :phone
-      row :email
-      row :contact_preference
-      row :created_at
+      end if claim.meta && !claim.meta.empty?
     end
   end
 end
