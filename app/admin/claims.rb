@@ -86,8 +86,22 @@ ActiveAdmin.register Claim do
               end
             end
           end
+        end if claim.meta && !claim.meta.empty?
+
+        panel "Street View Maps" do
         end
-      end if claim.meta && !claim.meta.empty?
+
+        panel "Direct Contact" do
+          div do
+            html = ""
+            html += div text_area(:message, :content, { style: 'width: 100%;', rows: 8 }).html_safe
+            html += br
+            html += button("Send SMS").html_safe
+            html += button("Send Email", { style: 'float: right;' } ).html_safe
+            html
+          end
+        end
+      end
     end
   end
 end

@@ -41,11 +41,11 @@
 
     <h3 class="main_question"><br>Select your additional addons</h3>
 
-    <div class="form-group radio_questions" id="sumplemental_claim">
-        <label>Sumplemental Claim
+    <div class="form-group radio_questions" id="supplemental_claim">
+        <label>Supplemental Claim
             <span style="float: right;">$199.99</span>
             <input id="addons_101" name="claim[addons_101]" type="radio" value="101" class="icheck" onclick="toogleAddons(this, 101);">
-            <div id="sumplemental_room">
+            <div id="supplemental_room">
               <br>
               <div class="row">
                 <div class="col-sm-6">
@@ -131,9 +131,9 @@
 <script type="text/javascript">
   $('input[name="claim[addons_101]"]').click(function(el){
     if (el.currentTarget.parentElement.classList.contains("checked")) {
-      $("#sumplemental_room").show();
+      $("#supplemental_room").show();
     } else {
-      $("#sumplemental_room").hide();
+      $("#supplemental_room").hide();
     }
   });
 
@@ -157,7 +157,7 @@
                   </div>
                 </div>`
 
-    $("#sumplemental_room").append(new_room);
+    $("#supplemental_room").append(new_room);
   }
 
   function toogleAddons(el, id) {
