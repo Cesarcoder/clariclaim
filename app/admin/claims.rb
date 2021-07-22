@@ -89,6 +89,9 @@ ActiveAdmin.register Claim do
         end if claim.meta && !claim.meta.empty?
 
         panel "Street View Maps" do
+          attributes_table_for claim do
+            render partial: 'maps', locals: { location: claim.loss_location }
+          end
         end
 
         panel "Direct Contact" do
