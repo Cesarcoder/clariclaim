@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+    ccaiapp:
+        image: ccai-pdfparser:0.1
+        build: .
+        container_name: ccaiapp
+        hostname: ccaiapp
+        ports: 
+          - "5051:5051/tcp"
+        environment:
+            # Can take values DEBUG INFO WARNING ERROR CRITICAL
+            LOG_LEVEL: DEBUG
+        volumes:
+            - ./src:/clariclaim/src
+            - ./pdfs:/pdfs/
+        
