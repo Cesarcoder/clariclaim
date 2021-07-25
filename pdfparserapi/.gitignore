@@ -1,0 +1,12 @@
+# Mac
+.DS_Store
+
+# VS code
+*.code-workspace
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Jupyter notebook
+.ipynb_checkpoints

@@ -1,0 +1,5 @@
+# Jupter checkpoints
+.ipynb_checkpoints
+# Mac
+.DS_Store
+__pycache__

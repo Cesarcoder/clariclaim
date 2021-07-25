@@ -1,0 +1,18 @@
+FROM python:3.7.10-slim-buster
+
+LABEL maintainer "sathiyanarayanan@alumni.iith.ac.in"
+
+COPY requirements.txt /tmp/
+RUN --mount=type=cache,target=/root/.cache/pip \
+    python3 -m pip install -r /tmp/requirements.txt
+# RUN --mount=type=cache,target=/root/.cache/pip \
+#     python3 -m pip install --no-cache-dir -r /tmp/requirements.txt
+
+COPY config/ /config
+COPY src /clariclaim/src
+
+WORKDIR /clariclaim
+
+CMD ["python3", "src/app.py"]
+
+
