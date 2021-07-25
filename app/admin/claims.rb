@@ -35,15 +35,15 @@ ActiveAdmin.register Claim do
           row :property_type
           row :declarations_page do |claim|
             link_to(
-              claim.declarations_page.filename, url_for(claim.declarations_page),
+              claim.declarations_page_identifier, claim.declarations_page.url,
               target: :blank
-            ) rescue ""
+            ) if !claim.declarations_page.file.nil?
           end
           row :insurance_estimate do |claim|
             link_to(
-              claim.insurance_estimate.filename, url_for(claim.insurance_estimate),
+              claim.insurance_estimate_identifier, claim.insurance_estimate.url,
               target: :blank
-            ) rescue ""
+            ) if !claim.insurance_estimate.file.nil?
           end
           row :other_unit_affected
           row :damage_outside_insurance

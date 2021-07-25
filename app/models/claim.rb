@@ -4,8 +4,9 @@ class Claim < ApplicationRecord
   enum contact_preference: { phone: 0, email: 1 }
 
   belongs_to :package
-  has_one_attached :declarations_page
-  has_one_attached :insurance_estimate
+
+  mount_uploader :declarations_page,  PdfUploader
+  mount_uploader :insurance_estimate, PdfUploader
 
   validate :loss_date_cannot_be_in_the_future
 

@@ -21,6 +21,8 @@ class CreateClaims < ActiveRecord::Migration[6.1]
       t.string  :email
       t.integer :contact_preference
       t.json    :meta
+      t.string  :declarations_page
+      t.string  :insurance_estimate
 
       t.timestamps
     end

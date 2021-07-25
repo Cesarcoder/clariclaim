@@ -46,8 +46,9 @@ end
 
 gem 'activeadmin'
 gem 'active_hash'
+gem 'carrierwave', '~> 2.0'
 gem 'devise'
-gem 'google-cloud-storage', '~> 1.11', require: false
+gem 'fog-google'
 gem 'sidekiq'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
