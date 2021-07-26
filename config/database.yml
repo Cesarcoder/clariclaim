@@ -66,6 +66,6 @@ test:
 #
 production:
   <<: *default
-  database: clariclaim_production
-  username: clariclaim
-  password: <%= ENV['CLARICLAIM_DATABASE_PASSWORD'] %>
+  database: <%= ENV["CLARICLAIM_DATABASE_NAME"] %>
+  username: <%= ENV["CLARICLAIM_DATABASE_USERNAME"] %>
+  password: <%= ENV["CLARICLAIM_DATABASE_PASSWORD"] %>
