@@ -1,0 +1,669 @@
+{
+    "data": {
+        "claim_number": "3074501",
+        "company": "Cambridge Mutual Fire Insurance Company",
+        "email": "tvarnum@andovercos.com jreilly@butterworthotoole.com jreilly@bu",
+        "estimate": "17-0267",
+        "estimator": "James Reilly",
+        "insured": "Barry Hobey",
+        "phone": "",
+        "type_of_loss": "Wind Damage"
+    },
+    "data_full": [
+        {
+            "form_element": {
+                "Business:": [
+                    "(800) 225-0770",
+                    "P.O. Box 8294Salem, MA 01971-8294",
+                    "P.O. Box 8294Salem, MA 01971-8294",
+                    "95 Old River RoadAndover, MA 01810"
+                ],
+                "Claim Number:": [
+                    "3074501"
+                ],
+                "Claim Rep.:": [
+                    "James Reilly"
+                ],
+                "Company:": [
+                    "Cambridge Mutual Fire Insurance Company"
+                ],
+                "Date Contacted:": [
+                    "3/29/2021 12:00 AM"
+                ],
+                "Date Entered:": [
+                    "3/29/2021 12:00 AM"
+                ],
+                "Date Inspected:": [
+                    "3/31/2021 12:00 AM"
+                ],
+                "Date Received:": [
+                    "3/29/2021 12:00 AM"
+                ],
+                "Date of Loss:": [
+                    "3/12/2021 12:00 AM"
+                ],
+                "E-mail:": [
+                    "tvarnum@andovercos.com",
+                    "jreilly@butterworthotoole.com",
+                    "jreilly@butterworthotoole.com"
+                ],
+                "Estimate:": [
+                    "17-0267"
+                ],
+                "Estimator:": [
+                    "James Reilly"
+                ],
+                "FAX.": [
+                    "978-740-9109"
+                ],
+                "Fax:": [
+                    "(978) 740-9109"
+                ],
+                "Home:": [
+                    "(978) 921-6333",
+                    "12 Devonshire RoadMiddleton, MA 01949"
+                ],
+                "Insured:": [
+                    "Barry Hobey"
+                ],
+                "Policy Number:": [
+                    "3074501"
+                ],
+                "Price List:": [
+                    "MABO8X_MAR21"
+                ],
+                "Primary:": [
+                    "(978) 741-5731",
+                    "(978) 741-5731"
+                ],
+                "Property:": [
+                    "12 Devonshire RoadMiddleton, MA 01949"
+                ],
+                "Reference:": [
+                    "Joseph DiBlasi"
+                ],
+                "Secondary:": [
+                    "(603) 718-5090"
+                ],
+                "TEL.": [
+                    "Butterworth & O'Toole, Inc.ADJUSTERS/APPRAISERSP.O. BOX 8294SALEM, MA 01970-8294978-741-5731978-740-9109"
+                ],
+                "Type of Loss:": [
+                    "Wind Damage"
+                ]
+            },
+            "table": [
+                [
+                    {
+                        "(978) 921-6333": "",
+                        "Barry Hobey": "12 Devonshire Road",
+                        "Home:": "",
+                        "Insured:": "Property:"
+                    },
+                    {
+                        "(978) 921-6333": "",
+                        "Barry Hobey": "Middleton, MA 01949",
+                        "Home:": "",
+                        "Insured:": ""
+                    },
+                    {
+                        "(978) 921-6333": "",
+                        "Barry Hobey": "12 Devonshire Road",
+                        "Home:": "",
+                        "Insured:": "Home:"
+                    },
+                    {
+                        "(978) 921-6333": "(978) 741-5731(603) 718-5090",
+                        "Barry Hobey": "Middleton, MA 01949James Reilly P.O. Box 8294",
+                        "Home:": "Primary: Secondary:",
+                        "Insured:": "Claim Rep.: Business:"
+                    },
+                    {
+                        "(978) 921-6333": "(978) 740-9109",
+                        "Barry Hobey": "Salem, MA 01971-8294",
+                        "Home:": "Fax:",
+                        "Insured:": ""
+                    },
+                    {
+                        "(978) 921-6333": "jreilly@butterworthotoole.com",
+                        "Barry Hobey": "",
+                        "Home:": "E-mail:",
+                        "Insured:": ""
+                    },
+                    {
+                        "(978) 921-6333": "(978) 741-5731jreilly@butterworthotoole.com",
+                        "Barry Hobey": "James Reilly P.O. Box 8294Salem, MA 01971-8294",
+                        "Home:": "Primary: E-mail:",
+                        "Insured:": "Estimator: Business:"
+                    },
+                    {
+                        "(978) 921-6333": "(800) 225-0770tvarnum@andovercos.com",
+                        "Barry Hobey": "Joseph DiBlasi Cambridge Mutual Fire Insurance Company95 Old River Road",
+                        "Home:": "Business: E-mail:",
+                        "Insured:": "Reference: Company: Business:"
+                    },
+                    {
+                        "(978) 921-6333": "",
+                        "Barry Hobey": "Andover, MA 01810",
+                        "Home:": "",
+                        "Insured:": ""
+                    }
+                ],
+                [
+                    {
+                        "(978) 741-5731": "(603) 718-5090",
+                        "Primary:": "Secondary:"
+                    },
+                    {
+                        "(978) 741-5731": "(978) 740-9109",
+                        "Primary:": "Fax:"
+                    },
+                    {
+                        "(978) 741-5731": "jreilly@butterworthotoole.com",
+                        "Primary:": "E-mail:"
+                    },
+                    {
+                        "(978) 741-5731": "(978) 741-5731jreilly@butterworthotoole.com",
+                        "Primary:": "Primary: E-mail:"
+                    },
+                    {
+                        "(978) 741-5731": "(800) 225-0770",
+                        "Primary:": "Business:"
+                    },
+                    {
+                        "(978) 741-5731": "tvarnum@andovercos.com",
+                        "Primary:": "E-mail:"
+                    }
+                ],
+                [
+                    {
+                        "3/29/2021 12:00 AM": "3/12/2021 12:00 AM",
+                        "Date Contacted:": "Date of Loss:"
+                    },
+                    {
+                        "3/29/2021 12:00 AM": "3/31/2021 12:00 AM",
+                        "Date Contacted:": "Date Inspected:"
+                    },
+                    {
+                        "3/29/2021 12:00 AM": "MABO8X_MAR21",
+                        "Date Contacted:": "Price List:"
+                    },
+                    {
+                        "3/29/2021 12:00 AM": "Restoration/Service/Remodel",
+                        "Date Contacted:": ""
+                    },
+                    {
+                        "3/29/2021 12:00 AM": "17-0267",
+                        "Date Contacted:": "Estimate:"
+                    }
+                ],
+                [
+                    {
+                        "12:00 AM": "12:00 AM",
+                        "3/29/2021": "3/29/2021",
+                        "Date Received:": "Date Entered:"
+                    }
+                ]
+            ]
+        },
+        {
+            "form_element": {
+                "ADJUSTERS/APPRAISERS": [
+                    "P.O. BOX 8294SALEM, MA 01970-8294978-741-5731978-740-9109"
+                ],
+                "Butterworth & O'Toole, Inc.": [
+                    "P.O. BOX 8294SALEM, MA 01970-8294978-741-5731"
+                ],
+                "FAX.": [
+                    "978-740-9109"
+                ],
+                "TEL.": [
+                    "978-741-5731"
+                ],
+                "Totals:": [
+                    "Exterior",
+                    "General Conditions"
+                ]
+            },
+            "table": [
+                [
+                    {
+                        "ACV": "4,367.74",
+                        "DEPREC.": "(0.00)",
+                        "DESCRIPTION": "2. Vinyl (PVC) fence gate, 5'- 6' high - full slat",
+                        "O&P": "727.96",
+                        "QUANTITY": "32.00 LF",
+                        "RCV": "4,367.74",
+                        "TAX": "172.58",
+                        "UNIT PRICE": "108.35"
+                    },
+                    {
+                        "ACV": "312.00",
+                        "DEPREC.": "(0.00)",
+                        "DESCRIPTION": "21. Fencing Installer - per hour Evaluate and re-plumb surrounding panels",
+                        "O&P": "52.00",
+                        "QUANTITY": "4.00 HR",
+                        "RCV": "312.00",
+                        "TAX": "0.00",
+                        "UNIT PRICE": "65.00"
+                    },
+                    {
+                        "ACV": "653.91",
+                        "DEPREC.": "(0.00)",
+                        "DESCRIPTION": "4. Clean with pressure/chemical spray - Heavy",
+                        "O&P": "108.98",
+                        "QUANTITY": "972.00 SF",
+                        "RCV": "653.91",
+                        "TAX": "0.61",
+                        "UNIT PRICE": "0.56"
+                    },
+                    {
+                        "ACV": "",
+                        "DEPREC.": "",
+                        "DESCRIPTION": "Heavy was chosen due to difficult access on",
+                        "O&P": "of a large",
+                        "QUANTITY": "back side of",
+                        "RCV": "retaining wall.",
+                        "TAX": "located at the top",
+                        "UNIT PRICE": "fence. Fence is"
+                    },
+                    {
+                        "ACV": "92.90",
+                        "DEPREC.": "(0.00)",
+                        "DESCRIPTION": "10. Tank - Above ground propane/fuel storage - 250 gallon - Inspection*",
+                        "O&P": "15.48",
+                        "QUANTITY": "1.00 EA",
+                        "RCV": "92.90",
+                        "TAX": "0.00",
+                        "UNIT PRICE": "77.42"
+                    },
+                    {
+                        "ACV": "1,725.97",
+                        "DEPREC.": "<1,726.01>",
+                        "DESCRIPTION": "13. Athletic equip. - b-ball std. - glass - floor mounted - swing*",
+                        "O&P": "575.34",
+                        "QUANTITY": "1.00 EA",
+                        "RCV": "3,451.98",
+                        "TAX": "143.75",
+                        "UNIT PRICE": "2,732.89"
+                    }
+                ],
+                [
+                    {
+                        "Column-2": "TAX",
+                        "Column-3": "O&P",
+                        "Column-4": "RCV",
+                        "Column-5": "DEPREC.",
+                        "Column-6": "ACV",
+                        "Conditions": "QUANTITY UNIT PRICE",
+                        "General": "DESCRIPTION"
+                    },
+                    {
+                        "Column-2": "0.00",
+                        "Column-3": "208.00",
+                        "Column-4": "1,248.00",
+                        "Column-5": "(0.00)",
+                        "Column-6": "1,248.00",
+                        "Conditions": "16.00 HR 65.00",
+                        "General": "17. Removal, Preparation & Protective Coverings"
+                    },
+                    {
+                        "Column-2": "0.00",
+                        "Column-3": "26.00",
+                        "Column-4": "156.00",
+                        "Column-5": "(0.00)",
+                        "Column-6": "156.00",
+                        "Conditions": "2.00 HR 65.00",
+                        "General": "18. Removing/Resetting/Covering - Contents to facilitate repairs"
+                    },
+                    {
+                        "Column-2": "0.00",
+                        "Column-3": "94.12",
+                        "Column-4": "564.76",
+                        "Column-5": "(0.00)",
+                        "Column-6": "564.76",
+                        "Conditions": "1.00 EA 470.64",
+                        "General": "19. Tandem axle dump trailer - per - load - including dump fees"
+                    },
+                    {
+                        "Column-2": "0.00",
+                        "Column-3": "35.00",
+                        "Column-4": "210.00",
+                        "Column-5": "(0.00)",
+                        "Column-6": "210.00",
+                        "Conditions": "1.00 EA 175.00",
+                        "General": "20. Final Clean up / Debris Removal"
+                    },
+                    {
+                        "Column-2": "0.00",
+                        "Column-3": "337.80",
+                        "Column-4": "2,026.83",
+                        "Column-5": "(0.00)",
+                        "Column-6": "2,026.83",
+                        "Conditions": "1.00 EA 1,689.03",
+                        "General": "1. Tree - tear out and disposal - 24\" to 36\""
+                    },
+                    {
+                        "Column-2": "and propane",
+                        "Column-3": "tanks",
+                        "Column-4": "",
+                        "Column-5": "",
+                        "Column-6": "",
+                        "Conditions": "basketball hoop, retaining wall, fence",
+                        "General": "diameterTree is on a net, paved parking area,"
+                    },
+                    {
+                        "Column-2": "0.00",
+                        "Column-3": "700.92",
+                        "Column-4": "4,205.59",
+                        "Column-5": "0.00",
+                        "Column-6": "4,205.59",
+                        "Conditions": "",
+                        "General": "Totals: General Conditions"
+                    }
+                ]
+            ]
+        },
+        {
+            "form_element": {
+                "ADJUSTERS/APPRAISERS": [
+                    "Butterworth & O'Toole, Inc.P.O. BOX 8294SALEM, MA 01970-8294978-741-5731978-740-9109"
+                ],
+                "FAX.": [
+                    "978-740-9109"
+                ],
+                "Line Item Totals:": [
+                    "17-0267"
+                ],
+                "TEL.": [
+                    "978-741-5731"
+                ]
+            },
+            "table": []
+        },
+        {
+            "form_element": {
+                "$2,026.83": [
+                    "$2,026.83"
+                ],
+                "ADJUSTERS/APPRAISERS": [
+                    "Butterworth & O'Toole, Inc.P.O. BOX 8294SALEM, MA 01970-8294978-741-5731"
+                ],
+                "Actual Cash Value": [
+                    "$12,613.91"
+                ],
+                "Aggregate Limit": [
+                    "$500.00"
+                ],
+                "Description": [
+                    "Sublimit RecapTree Debris"
+                ],
+                "FAX.": [
+                    "978-740-9109"
+                ],
+                "Less Deductible": [
+                    "(2,500.00)"
+                ],
+                "Material Sales Tax": [
+                    "317.44"
+                ],
+                "Overage": [
+                    "$1,526.83"
+                ],
+                "Profit": [
+                    "1,270.79"
+                ],
+                "RCV": [
+                    "$2,026.83"
+                ],
+                "Replacement Cost Value": [
+                    "$15,249.52Less Non-recoverable Depreciation <2,635.61>"
+                ],
+                "Single Item Limit": [
+                    "$500.00"
+                ],
+                "Subtotal": [
+                    "12,707.94"
+                ],
+                "Summary for Other Structures": [
+                    "12,390.50317.44"
+                ],
+                "TEL.": [
+                    "978-741-5731"
+                ]
+            },
+            "table": [
+                [
+                    {
+                        "Column-1": "12,390.50",
+                        "Summary for Other Structures": "Line Item Total"
+                    },
+                    {
+                        "Column-1": "317.4412,707.941,270.79",
+                        "Summary for Other Structures": "Material Sales Tax Subtotal Overhead"
+                    },
+                    {
+                        "Column-1": "1,270.79",
+                        "Summary for Other Structures": "Profit"
+                    },
+                    {
+                        "Column-1": "$15,249.52<2,635.61>",
+                        "Summary for Other Structures": "Replacement Cost Value Less Non-recoverable Depreciation"
+                    },
+                    {
+                        "Column-1": "$12,613.91(2,500.00)",
+                        "Summary for Other Structures": "Actual Cash Value Less Deductible"
+                    },
+                    {
+                        "Column-1": "$10,113.91",
+                        "Summary for Other Structures": "Net Claim"
+                    }
+                ],
+                [
+                    {
+                        "ACV": "$2,026.83",
+                        "Aggregate Limit": "$500.00",
+                        "Description": "Tree Debris",
+                        "Overage": "$1,526.83",
+                        "RCV": "$2,026.83",
+                        "Single Item Limit": "$500.00"
+                    },
+                    {
+                        "ACV": "$2,026.83",
+                        "Aggregate Limit": "",
+                        "Description": "",
+                        "Overage": "$1,526.83",
+                        "RCV": "$2,026.83",
+                        "Single Item Limit": ""
+                    }
+                ]
+            ]
+        },
+        {
+            "form_element": {
+                "ADJUSTERS/APPRAISERS": [
+                    "Butterworth & O'Toole, Inc.P.O. BOX 8294SALEM, MA 01970-8294978-741-5731"
+                ],
+                "FAX.": [
+                    "978-740-9109"
+                ],
+                "Line Items": [
+                    "Total"
+                ],
+                "Material Sales Tax": [
+                    "(6.25%) 317.44 317.44"
+                ],
+                "Overhead (10%)": [
+                    "1,270.79 1,270.79"
+                ],
+                "Profit (10%)": [
+                    "1,270.79 1,270.79"
+                ],
+                "TEL.": [
+                    "978-741-5731"
+                ]
+            },
+            "table": [
+                [
+                    {
+                        "(6.25%)": "0.00",
+                        "Column-0": "Line Items 1,270.79",
+                        "Column-1": "1,270.79",
+                        "Column-4": "0.00"
+                    },
+                    {
+                        "(6.25%)": "0.00",
+                        "Column-0": "Total 1,270.79",
+                        "Column-1": "1,270.79",
+                        "Column-4": "0.00"
+                    }
+                ]
+            ]
+        },
+        {
+            "form_element": {
+                "100.00%": [
+                    "12,390.50",
+                    "12,390.50"
+                ],
+                "71.71%": [
+                    "8,885.83"
+                ],
+                "ADJUSTERS/APPRAISERS": [
+                    "Butterworth & O'Toole, Inc.P.O. BOX 8294SALEM, MA 01970-8294978-741-5731978-740-9109"
+                ],
+                "Estimate:": [
+                    "17-0267"
+                ],
+                "FAX.": [
+                    "978-740-9109"
+                ],
+                "TEL.": [
+                    "978-741-5731"
+                ]
+            },
+            "table": [
+                [
+                    {
+                        "71.71%": "28.29%",
+                        "8,885.83": "3,504.67",
+                        "Exterior": "General Conditions"
+                    },
+                    {
+                        "71.71%": "100.00%",
+                        "8,885.83": "12,390.50",
+                        "Exterior": "Subtotal of Areas"
+                    },
+                    {
+                        "71.71%": "100.00%",
+                        "8,885.83": "12,390.50",
+                        "Exterior": "Total"
+                    }
+                ],
+                [
+                    {
+                        "71.71%": "28.29%",
+                        "8,885.83": "3,504.67"
+                    },
+                    {
+                        "71.71%": "100.00%",
+                        "8,885.83": "12,390.50"
+                    },
+                    {
+                        "71.71%": "100.00%",
+                        "8,885.83": "12,390.50"
+                    }
+                ]
+            ]
+        },
+        {
+            "form_element": {
+                "ADJUSTERS/APPRAISERS": [
+                    "Butterworth & O'Toole, P.O. BOX 8294SALEM, MA 01970-8294978-741-5731"
+                ],
+                "CLEANING": [
+                    "832.32"
+                ],
+                "FAX.": [
+                    "978-740-9109"
+                ],
+                "O&P Items Subtotal": [
+                    "12,390.50"
+                ],
+                "TEL.": [
+                    "978-741-5731"
+                ],
+                "Total": [
+                    "15,249.52"
+                ]
+            },
+            "table": [
+                [
+                    {
+                        "ACV": "832.32",
+                        "Deprec.": "",
+                        "O&P Items": "CLEANING",
+                        "RCV": "832.32"
+                    },
+                    {
+                        "ACV": "2,159.67",
+                        "Deprec.": "",
+                        "O&P Items": "GENERAL DEMOLITION",
+                        "RCV": "2,159.67"
+                    },
+                    {
+                        "ACV": "1,443.86",
+                        "Deprec.": "1,366.45",
+                        "O&P Items": "MISC. EQUIPMENT - COMMERCIAL",
+                        "RCV": "2,810.31"
+                    },
+                    {
+                        "ACV": "3,965.20",
+                        "Deprec.": "238.00",
+                        "O&P Items": "FENCING",
+                        "RCV": "4,203.20"
+                    },
+                    {
+                        "ACV": "1,865.00",
+                        "Deprec.": "520.00",
+                        "O&P Items": "LABOR ONLY",
+                        "RCV": "2,385.00"
+                    },
+                    {
+                        "ACV": "10,266.05",
+                        "Deprec.": "2,124.45",
+                        "O&P Items": "O&P Items Subtotal",
+                        "RCV": "12,390.50"
+                    },
+                    {
+                        "ACV": "245.56",
+                        "Deprec.": "71.88",
+                        "O&P Items": "Material Sales Tax",
+                        "RCV": "317.44"
+                    },
+                    {
+                        "ACV": "1,051.15",
+                        "Deprec.": "219.64",
+                        "O&P Items": "Overhead",
+                        "RCV": "1,270.79"
+                    },
+                    {
+                        "ACV": "1,051.15",
+                        "Deprec.": "219.64",
+                        "O&P Items": "Profit",
+                        "RCV": "1,270.79"
+                    },
+                    {
+                        "ACV": "12,613.91",
+                        "Deprec.": "2,635.61",
+                        "O&P Items": "Total",
+                        "RCV": "15,249.52"
+                    }
+                ]
+            ]
+        }
+    ],
+    "error": -1,
+    "message": "success",
+    "statusCode": 200
+}
