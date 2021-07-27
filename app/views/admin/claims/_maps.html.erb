@@ -4,5 +4,9 @@
   style="border:0"
   loading="lazy"
   allowfullscreen
-  src='<%= "https://www.google.com/maps/embed/v1/place?key=AIzaSyDTnrAc18j5zHsTD5z-wA1SNqJ0ExJfRH8&q=#{location}&zoom=14" %>'>
+  src='<%= "https://www.google.com/maps/embed/v1/streetview?key=AIzaSyDTnrAc18j5zHsTD5z-wA1SNqJ0ExJfRH8&location=#{location_point}" %>'>
 </iframe>
+
+<div style="float:right">
+  Or <a href='<%= "https://maps.google.com/?q=#{location}&zoom=14" %> target="_blank"'> show on maps</a> if Street View unavailable.
+</div>

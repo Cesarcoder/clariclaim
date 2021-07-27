@@ -49,17 +49,40 @@ class Claim < ApplicationRecord
 
     uri = URI(ENV['OCR_SERVICE_URL'])
     https = Net::HTTP.new(uri.host, uri.port)
-    https.use_ssl = true
+    # https.use_ssl = true
 
     request = Net::HTTP::Post.new(uri.path)
 
     puts "declarations_page.url"
     puts declarations_page.url
 
-    request['file_url'] = declarations_page.url
+    request['pdf_path'] = declarations_page.url
     response = https.request(request)
 
     update_columns(meta: JSON.parse(response.body))
+  end
+
+  def send_sms(message, from=nil)
+    require 'rubygems'
+    require 'twilio-ruby'
+
+    account_sid = 'AC38d806a071041dec24bcc491b6ed7e1c'
+    auth_token = '[AuthToken]'
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    @client.messages.create(
+               body: message,
+               to: phone_with_codes
+             )
+
+    puts message.sid
+  end
+
+  def phone_with_codes
+    if !loss_location.include?("+")
+      return phone.prepend("+1") if loss_location.include?("US")
+    end
+
+    phone
   end
 
   private

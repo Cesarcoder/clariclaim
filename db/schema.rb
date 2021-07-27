@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_004320) do
     t.text "loss_type_desc"
     t.string "loss_location"
     t.string "loss_location_point"
+    t.json "loss_location_meta"
     t.date "loss_date"
     t.string "property_type"
     t.boolean "other_unit_affected"

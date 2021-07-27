@@ -83,6 +83,8 @@
                 <label>Location of Loss</label>
                 <div class="form-group">
                     <input type="text" id="loss_location" name="claim[loss_location]" class="required form-control" placeholder="Enter your loss location here">
+                    <input type="hidden" id="loss_location_point" name="claim[loss_location_point]" value="">
+                    <input type="hidden" id="loss_location_meta" name="claim[loss_location_meta]" value="{}">
                 </div>
             </div><!-- /col-sm-6 -->
 
@@ -154,6 +156,16 @@
     lossLocationField = document.querySelector("#loss_location");
     autocomplete = new google.maps.places.Autocomplete(lossLocationField);
     lossLocationField.focus();
+
+    autocomplete.addListener("place_changed", fillInAddress);
+  }
+
+  function fillInAddress() {
+    const place = autocomplete.getPlace();
+    const lat   = place.geometry.location.lat();
+    const lng   = place.geometry.location.lng();
+    $('#loss_location_point').val(lat + "," + lng);
+    $('#loss_location_meta').val(JSON.stringify(place));
   }
 
   function showSuplemenClaim() {
