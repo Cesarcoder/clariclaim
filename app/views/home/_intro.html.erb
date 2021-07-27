@@ -3,6 +3,12 @@
     <p>Replacement Cost? Proof of loss? Remove and Reset? No matter what type of loss you suffered, We Can help.</p>
 </div><!-- /intro_txt -->
 
+<div id="claim-button-mobile-container">
+  <button id="claim-button-mobile" class="btn_1" type="button" name="button" onclick="openClaimForm()">
+    ClariClaim Report
+  </button>
+</div>
+
 <video id="my-video" class="video" loop muted autoplay playsinline>
   <source src="media/clariclaim-video.mp4" type="video/mp4">
   <source src="media/clariclaim-video.ogv" type="video/ogg">
@@ -11,3 +17,13 @@
 <div class="video_fallback"></div>
 
 <div class="layer"></div><!-- /mask -->
+
+<script type="text/javascript">
+  function openClaimForm() {
+    $Mc = $('#main_container');
+    $Layer = $('.layer');
+    $Mc.addClass("show_container")
+    $Layer.addClass("layer-is-visible")
+    $('#tab_1').addClass("active show");
+  }
+</script>
