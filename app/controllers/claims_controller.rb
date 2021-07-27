@@ -4,8 +4,11 @@ class ClaimsController < ApplicationController
 
     respond_to do |format|
       if @claim.save
-        # after save
-        @claim.update_columns(addons_data: addons_params)
+        @claim.update_columns(
+          addons_data: addons_params,
+          loss_location_meta: loss_location_meta_params
+        )
+
         ExtractWorker.perform_async(@claim.id)
 
         format.html { redirect_to success_claims_path, notice: "Claim was successfully created." }
@@ -63,5 +66,9 @@ class ClaimsController < ApplicationController
           rooms: rooms
         }
       }
+    end
+
+    def loss_location_meta_params
+      JSON.parse(params[:claim][:loss_location_meta])
     end
 end
