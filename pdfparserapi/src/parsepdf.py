@@ -6,9 +6,10 @@ import os
 import pprint
 import pandas as pd
 import uuid
+import json
 
 # Custom modules
-from dbops import DBOps
+# from dbops import DBOps
 from preparedata import PrepareData
 from gcpocrtable import GcpOcrTable
 
@@ -38,8 +39,14 @@ class ParsePdf(object):
         reload(logging)
         # from https://docs.python.org/2/howto/logging-cookbook.html
         global logger
+
+        # Verbose level logger
+        logging.VERBOSE = 5
+        logging.addLevelName(logging.VERBOSE, "VERBOSE")
+        logging.Logger.verbose = lambda inst, msg, *args, **kwargs: inst.log(logging.VERBOSE, msg, *args, **kwargs)
+
         logger = logging.getLogger('CCAI')
-        logger.setLevel(logging.DEBUG)
+        logger.setLevel(logging.VERBOSE)
         # Log formatter
         formatter = logging.Formatter('%(asctime)s %(levelname)s %(name)s: %(message)s', "%Y-%m-%d %H:%M:%S")
         
@@ -57,16 +64,16 @@ class ParsePdf(object):
         # Check user provided the optional log level parameter, 
         # If so check if its part of predefined list, else fall back to the 
         # default of INFO
-        log_levels = {'CRITICAL':50, 'ERROR':40, 'WARNING':30, 'INFO':20, 'DEBUG':10, 'NOTSET':0}
+        log_levels = {'CRITICAL':50, 'ERROR':40, 'WARNING':30, 'INFO':20, 'DEBUG':10, 'VERBOSE':5, 'NOTSET':0}
         # If environment variable is not set, log at debug level, if incorrect value is set
         # log at info level
-        log_level = os.getenv('LOG_LEVEL', 'DEBUG')
+        log_level = os.getenv('LOG_LEVEL', 'VERBOSE')
         if log_level not in log_levels:
             log_level = 'INFO'
         logLevelNumeric = log_levels[log_level]
         logger = self.get_logger(logLevelNumeric)
         logger.critical("Using log level {0}. [This message is raised at CRITICAL level so that this is visible at all log levels]".format(log_level))
-
+        
     def build_config(self, config_path):
         logger.info("Config Path: {}".format(config_path))
         parser = configparser.ConfigParser()
@@ -85,7 +92,7 @@ class ParsePdf(object):
         }
         return config
 
-    def process_file(self, file_path):
+    def process_file(self, file_path, page_no=0):
 
         logger.debug("Parsing {}".format(file_path))
         gcp_ocr = GcpOcrTable(self.config, file_path)
@@ -100,10 +107,13 @@ class ParsePdf(object):
         logger.debug("Pdf have {} page(s)".format(num_pages))
         
         content = gcp_ocr.parse_all_pages(process_tables=True)
-        logger.debug(content)
+        # content = gcp_ocr.parse_pages(page_no, process_tables=True)
+        logger.verbose(content)
 
         key_value_pairs_pp = self.prep.prep_meta_fields(content[0]['form_element'])
-        logger.debug(key_value_pairs_pp)
+        logger.verbose(key_value_pairs_pp)
+
+        return content
 
         # # Old version
         # document_id = str(uuid.uuid1())
@@ -130,10 +140,44 @@ if __name__ == '__main__':
 
     parse_pdf = ParsePdf(args.config_path)
 
+    # =================================================================
+    # Single file parsing
     file_path = 'pdfs/Adjusters Figures - Final.pdf'
-    # file_path = 'pdfs/Bateman Company DW Estimate.pdf'
+    file_path = 'pdfs/Bateman Company DW Estimate.pdf'
     file_path = 'pdfs/Final Draft with_without Removal Depreciation.pdf'
-    # file_path = 'pdfs/Fanning S_G Dwelling Estimate.pdf'
+    file_path = 'pdfs/Fanning S_G Dwelling Estimate.pdf'
+    parse_pdf.process_file(file_path, 0)
 
-    parse_pdf.process_file(file_path)
-    
+
+    # input_path = 'claims_uploaded_7-23'
+    # output_path = 'json_dump'
+
+    # =================================================================
+    # File preparation
+    # processed_file = []
+    # for file_path in sorted(os.listdir(input_path)):
+    #     if not file_path.endswith(('.pdf', '.PDF')):
+    #         continue
+    #     logger.info("Processing: {}".format(file_path))
+    #     processed_file.append({
+    #         'file_path':file_path,
+    #         'processed':False
+    #     })
+    # processed_file = pd.DataFrame(processed_file)
+    # processed_file.to_csv("processed_file.csv", index=False)
+
+    # =================================================================
+    # processed_file = pd.read_csv("processed_file.csv")
+    # for idx, row in processed_file.iterrows():
+    #     if row['processed']:
+    #         continue
+    #     file_path = row['file_path']
+    #     file_name_ext = os.path.basename(file_path)
+    #     file_name = os.path.splitext(file_name_ext)[0]
+    #     file_name = file_name + ".json"
+    #     content = parse_pdf.process_file(os.path.join(input_path, file_path))        
+    #     with open(os.path.join(output_path, file_name), 'w', encoding='utf-8') as f:
+    #         json.dump(content, f, ensure_ascii=False, indent=4)
+    #     processed_file.loc[idx, 'processed'] = True
+    #     processed_file.to_csv("processed_file.csv", index=False)
+        

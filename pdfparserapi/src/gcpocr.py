@@ -44,8 +44,18 @@ class GcpOcr(object):
         response = response.replace('\n', '')
         return response
 
+    def get_paragaph_elements(self):
+        output_text = []
+        for page in self.document.pages:
+            paragraphs = page.paragraphs
+            for paragraph in paragraphs:
+                paragraph_text = self._get_text(paragraph.layout, self.document)
+                output_text.append(paragraph_text)
+        return output_text
+                
+
     def add_key_values(self, key_value_pairs, key_string, value_string):
-        self.logger.debug("Key: {}, Value: {}".format(key_string, value_string))
+        self.logger.verbose("Key: {}, Value: {}".format(key_string, value_string))
         if key_string in key_value_pairs:
             key_value_pairs[key_string].append(value_string)
         else:
@@ -77,16 +87,22 @@ class GcpOcr(object):
         content = []
         page_count = self.get_page_count()
         for page_no in range(page_count):
-            self.logger.debug("parsing page {}/{}".format(page_no + 1, page_count))
-            self.parse_pdf(page_no)
-            content_page = {
-                'form_element':self.get_form_elements(),
-                'table':[]
-            }
-            if process_tables:
-                content_page['table'] = self.get_table_elements()
-            content.append(content_page)
+            content.append(self.parse_pages(page_no, process_tables))
         return content
+
+    def parse_pages(self, page_no, process_tables=False):
+        page_count = self.get_page_count()
+        self.logger.debug("parsing page {}/{}".format(page_no + 1, page_count))
+        self.parse_pdf(page_no)
+        content_page = {
+            'form_element':self.get_form_elements(),
+            'paragraph':self.get_paragaph_elements(),
+            'table':[],
+        }
+        if process_tables:
+            content_page['table'] = self.get_table_elements()
+        
+        return content_page
 
 
     
