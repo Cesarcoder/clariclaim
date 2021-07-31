@@ -56,6 +56,63 @@ class PrepareData(object):
                     processed[self.fm[ele]] = " ".join(data[ele])
         return processed
 
+    def _is_valid_amount(self, number):
+        try:
+            number = number.replace(',', '')
+            number = float(number)
+        except:
+            return False
+        if number < 100.0:
+            return False
+
+        return True
+
+    def get_total_amount(self, data):
+        # As last page likely to have final amount
+        # Loop from last page to first page
+        amount = ''
+        found_amount = False
+        for page in data[::-1]:
+            tables = page['table']
+            # Loop tables in reverse order
+            for table in tables[::-1]:
+                if len(table) < 1:
+                    continue
+                # If RCV in final records of the table
+                if 'RCV' in table[-1]:
+                    amount = table[-1]['RCV']
+                    amount = amount.replace('$', '')
+                    self.logger.verbose('Parsed amount: {}'.format(amount))
+                    if self._is_float(amount):
+                        found_amount = True
+                        break
+                    elif 'Total' in page['form_element']:
+                        amount = page['form_element']['Total'][0]
+                        amount = amount.replace('$', '')
+                        self.logger.verbose('Parsed amount: {}'.format(amount))
+                        if self._is_float(amount):
+                            found_amount = True
+                            break
+                elif 'Total' in page['form_element']:
+                    amount = page['form_element']['Total'][0]
+                    amount = amount.replace('$', '')
+                    if self._is_float(amount):
+                        found_amount = True
+                        break
+                elif 'Replacement Cost Value' in page['form_element']:
+                    amount = page['form_element']['Replacement Cost Value'][0]
+                    amount = amount.replace('$', '')
+                    if self._is_float(amount):
+                        found_amount = True
+                        break
+
+
+            # If amount is found break the page loop
+            if found_amount:
+                break
+        
+        return amount.replace(',', '')
+
 
 
         

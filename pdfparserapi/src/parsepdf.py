@@ -1,81 +1,36 @@
 import argparse
 import configparser
-from importlib import reload
-import logging
 import os
+import logging
 import pprint
 import pandas as pd
 import uuid
 import json
 
 # Custom modules
+from mylogger import init_logger
 # from dbops import DBOps
 from preparedata import PrepareData
 from gcpocrtable import GcpOcrTable
 
+
 class ParsePdf(object):
     def __init__(self, config_path):
         # Initialize logger and Orchestrator
-        self.init_logger()
+        log_level = os.getenv('LOG_LEVEL', 'INFO')
+        init_logger('CCAI', log_level)
+        self.logger = logging.getLogger()
         self.config = self.build_config(config_path)
 
-        logger.info('Setting credential env variables')
+        self.logger.info('Setting credential env variables')
         os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = self.config['credentials_json']
         print(self.config)
 
         # self.db = DBOps(self.config, setup=False)
         self.prep = PrepareData(self.config)
-        
-    def get_logger(self, logLevel):
-        """
-            Initializes the logger
-            Check specified log file exist, if not create the directory and file
-            Add both file and console handlers
-            Arguments
-            logLevel: Log level for both file and console
-        """
-
-        # Logging
-        reload(logging)
-        # from https://docs.python.org/2/howto/logging-cookbook.html
-        global logger
-
-        # Verbose level logger
-        logging.VERBOSE = 5
-        logging.addLevelName(logging.VERBOSE, "VERBOSE")
-        logging.Logger.verbose = lambda inst, msg, *args, **kwargs: inst.log(logging.VERBOSE, msg, *args, **kwargs)
-
-        logger = logging.getLogger('CCAI')
-        logger.setLevel(logging.VERBOSE)
-        # Log formatter
-        formatter = logging.Formatter('%(asctime)s %(levelname)s %(name)s: %(message)s', "%Y-%m-%d %H:%M:%S")
-        
-        # Logging to console
-        ch = logging.StreamHandler()
-        ch.setLevel(logLevel)
-        ch.setFormatter(formatter)
-        # add the handlers to the logger
-        logger.addHandler(ch)
-        return logger
-
-    def init_logger(self):
-        # Read Log level
-        # Declare predefined set of log levels
-        # Check user provided the optional log level parameter, 
-        # If so check if its part of predefined list, else fall back to the 
-        # default of INFO
-        log_levels = {'CRITICAL':50, 'ERROR':40, 'WARNING':30, 'INFO':20, 'DEBUG':10, 'VERBOSE':5, 'NOTSET':0}
-        # If environment variable is not set, log at debug level, if incorrect value is set
-        # log at info level
-        log_level = os.getenv('LOG_LEVEL', 'VERBOSE')
-        if log_level not in log_levels:
-            log_level = 'INFO'
-        logLevelNumeric = log_levels[log_level]
-        logger = self.get_logger(logLevelNumeric)
-        logger.critical("Using log level {0}. [This message is raised at CRITICAL level so that this is visible at all log levels]".format(log_level))
-        
+    
     def build_config(self, config_path):
-        logger.info("Config Path: {}".format(config_path))
+        self.logger.info("Config Path: {}".format(config_path))
         parser = configparser.ConfigParser()
         parser.read(config_path)
         config = {
@@ -92,26 +47,24 @@ class ParsePdf(object):
         }
         return config
 
-    def process_file(self, file_path, page_no=0):
-
-        logger.debug("Parsing {}".format(file_path))
+    def process_file(self, file_path):
+        self.logger.debug("Parsing {}".format(file_path))
         gcp_ocr = GcpOcrTable(self.config, file_path)
         file_availability = gcp_ocr.read_pdf()
         if not file_availability:
             error = 2
             message = 'File not available at {}'.format(file_path)
-            logger.error(message)
+            self.logger.error(message)
             return error, message
 
         num_pages = gcp_ocr.get_page_count()
-        logger.debug("Pdf have {} page(s)".format(num_pages))
+        self.logger.debug("Pdf have {} page(s)".format(num_pages))
         
         content = gcp_ocr.parse_all_pages(process_tables=True)
-        # content = gcp_ocr.parse_pages(page_no, process_tables=True)
-        logger.verbose(content)
+        self.logger.verbose(content)
 
         key_value_pairs_pp = self.prep.prep_meta_fields(content[0]['form_element'])
-        logger.verbose(key_value_pairs_pp)
+        self.logger.verbose(key_value_pairs_pp)
 
         return content
 
@@ -149,35 +102,5 @@ if __name__ == '__main__':
     parse_pdf.process_file(file_path, 0)
 
 
-    # input_path = 'claims_uploaded_7-23'
-    # output_path = 'json_dump'
-
-    # =================================================================
-    # File preparation
-    # processed_file = []
-    # for file_path in sorted(os.listdir(input_path)):
-    #     if not file_path.endswith(('.pdf', '.PDF')):
-    #         continue
-    #     logger.info("Processing: {}".format(file_path))
-    #     processed_file.append({
-    #         'file_path':file_path,
-    #         'processed':False
-    #     })
-    # processed_file = pd.DataFrame(processed_file)
-    # processed_file.to_csv("processed_file.csv", index=False)
-
-    # =================================================================
-    # processed_file = pd.read_csv("processed_file.csv")
-    # for idx, row in processed_file.iterrows():
-    #     if row['processed']:
-    #         continue
-    #     file_path = row['file_path']
-    #     file_name_ext = os.path.basename(file_path)
-    #     file_name = os.path.splitext(file_name_ext)[0]
-    #     file_name = file_name + ".json"
-    #     content = parse_pdf.process_file(os.path.join(input_path, file_path))        
-    #     with open(os.path.join(output_path, file_name), 'w', encoding='utf-8') as f:
-    #         json.dump(content, f, ensure_ascii=False, indent=4)
-    #     processed_file.loc[idx, 'processed'] = True
-    #     processed_file.to_csv("processed_file.csv", index=False)
+    
         
