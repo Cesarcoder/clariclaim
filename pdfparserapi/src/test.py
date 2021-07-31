@@ -1,7 +1,8 @@
 import os
 import json
 import pandas as pd
-os.environ["LOG_LEVEL"] = "DEBUG"
+os.environ["LOG_LEVEL"] = "VERBOSE"
+# os.environ["LOG_LEVEL"] = "DEBUG"
 
 from parsepdf import ParsePdf
 parse_pdf = ParsePdf('config/config-local.ini')
@@ -60,8 +61,11 @@ for idx, row in final_value.iterrows():
     f = open(os.path.join(json_dump_path, file_name), encoding="utf8")
     data = json.load(f)
     amount = parse_pdf.prep.get_total_amount(data)
-    print(file_name, row['Final Value'], amount)
+    print(file_name, '\t', row['RCV'], '\t', amount)
     final_value.loc[idx, 'Prediction'] = amount
+    if file_name == 'Shattuck revised.json':
+        import pdb
+        pdb.set_trace()
 final_value.to_csv('Data/final_value.csv', index=False)
 
     

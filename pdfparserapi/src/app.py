@@ -77,28 +77,9 @@ def homepage():
 
     prep = PrepareData(config)
     key_value_pairs_pp = prep.prep_meta_fields(content[0]['form_element'])
-    logger.debug(key_value_pairs_pp)
-
-    # gcp_ocr.parse_pdf(page_no=0)
-    # key_value_pairs = gcp_ocr.get_form_elements()
-    # pp = pprint.PrettyPrinter(indent=2)
-    # pp.pprint(key_value_pairs)
-    # logger.debug(key_value_pairs)
-
-    # self.gcp_ocr.parse_pdf(file_path, page_no=4)
-    # table_data = self.gcp_ocr.get_table_elements()
-    # for table in table_data:
-    #     print(pd.DataFrame(table))
-
-    
-    # self.db.insert_record(key_value_pairs_pp)
+    key_value_pairs_pp['RCV'] = prep.get_total_amount(content)
+    logger.verbose(key_value_pairs_pp)
     # pp.pprint(key_value_pairs_pp)
-
-
-    # document_id = str(uuid.uuid1())
-
-    
-    
 
     return jsonify(statusCode = 200, error=error, message=message, data=key_value_pairs_pp, data_full=content)
 
