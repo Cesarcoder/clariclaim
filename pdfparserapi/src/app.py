@@ -15,7 +15,8 @@ CONFIG_PATH = '/config/config.ini'
 config = None
 
 # Initialize logger
-init_logger('CCAI', 'DEBUG')
+log_level = os.getenv('LOG_LEVEL', 'INFO')
+init_logger('CCAI', log_level)
 logger = logging.getLogger()
 
 def build_config(config_path):
