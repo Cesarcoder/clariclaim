@@ -17,7 +17,7 @@ config = None
 # Initialize logger
 log_level = os.getenv('LOG_LEVEL', 'INFO')
 init_logger('CCAI', log_level)
-logger = logging.getLogger()
+logger = logging.getLogger('CCAI')
 
 def build_config(config_path):
     logger.info("Config Path: {}".format(config_path))
