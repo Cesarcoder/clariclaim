@@ -30,13 +30,13 @@ only screen and (min-device-pixel-ratio: 2) {
   margin-top: 8px;
 }
 
-@media only screen and (min-width: 76px) {
+@media only screen and (min-width: 768px) {
   #claim-button-mobile {
     display: none;
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   #claim-button-mobile-container {
     display: flex;
     min-height: 130vh;
