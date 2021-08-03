@@ -25,14 +25,17 @@ class ClaimsController < ApplicationController
   def extract
     puts "extracted"
     render json: {
-       "claim_number":"TPPT84",
-       "company":"Seltser & Goldstein Public Adjusters",
-       "type_of_loss":"Water Damage",
-       "insured":"Billy & Katie S",
-       "estimate":"SILVA",
-       "estimator":"Tim Martino",
-       "email":"sample@email.com",
-       "phone":"123123123"
+      "RCV": "40433.49",
+      "business": "(508) 450-0507 (508) 450-0507",
+      "claim_number": "TPPT84",
+      "company": "",
+      "email": "tim.martino@seltser.com espalding@mapfreusa.com espalding@mapfreusa.com",
+      "estimate": "BILLY_SILVA",
+      "estimator": "Erin Spalding",
+      "insured": "BILLY SILVA",
+      "phone": "",
+      "policy_number": "BHMVBV",
+      "type_of_loss": "Water Damage"
     }
   end
 
