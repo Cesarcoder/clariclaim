@@ -178,7 +178,7 @@ class PrepareData(object):
                 jaccard_sim = self.jaccard_similarity(table_df.columns, column_list)
                 if jaccard_sim >= 0.5:
                     result.append(table_df)
-        if len(result) > 1:
+        if len(result) > 0:
             result = pd.concat(result)
             # Add columns, if standard ones are not present
             for column_name in column_list:
