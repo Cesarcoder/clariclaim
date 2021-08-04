@@ -185,5 +185,6 @@ class PrepareData(object):
                 if column_name not in result.columns:
                     result[column_name] = ''
             result = result[column_list]
+            result.fillna('', inplace=True)
             result = result.to_dict('records')
         return result
