@@ -10,6 +10,10 @@ ActiveAdmin.register Claim do
   filter :loss_location
   filter :created_at
 
+  member_action :meta, method: :get do
+    @meta = Claim.find(params[:id]).meta
+  end
+
   index do
     id_column
     column :first_name
@@ -35,7 +39,7 @@ ActiveAdmin.register Claim do
             link_to(
               claim.loss_location_point,
               "https://maps.google.com/?q=#{claim.loss_location}&zoom=14",
-              target: :blank
+              target: :_blank
             ) if claim.loss_location_point.present?
           end
           row :loss_date
@@ -43,13 +47,13 @@ ActiveAdmin.register Claim do
           row :declarations_page do |claim|
             link_to(
               claim.declarations_page_identifier, claim.declarations_page.url,
-              target: :blank
+              target: :_blank
             ) if !claim.declarations_page.file.nil?
           end
           row :insurance_estimate do |claim|
             link_to(
               claim.insurance_estimate_identifier, claim.insurance_estimate.url,
-              target: :blank
+              target: :_blank
             ) if !claim.insurance_estimate.file.nil?
           end
           row :other_unit_affected
@@ -89,7 +93,18 @@ ActiveAdmin.register Claim do
           attributes_table_for claim do
             claim&.meta["data"]&.each do |key, val|
               row key.to_sym do
-                val
+                data = val
+                if key == 'RCV'
+                  data += " - ("
+                  data += link_to(
+                        "view details",
+                        meta_admin_claim_path,
+                        target: :_blank
+                      )
+                  data += ")"
+                end
+
+                data.html_safe
               end
             end
           end

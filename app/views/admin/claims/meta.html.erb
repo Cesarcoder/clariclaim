@@ -1,0 +1,43 @@
+<%- begin %>
+  <%- column = @meta["tables"].first.keys %>
+
+  <table>
+    <tr>
+      <th></th>
+      <%- column.each do |key| %>
+        <th>
+          <%= key.upcase %>
+        </th>
+      <%- end %>
+    </tr>
+    <%- @meta["tables"].each_with_index do |row, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <%- column.each do |key| %>
+        <td>
+          <%= row[key] %>
+        </td>
+        <%- end %>
+      <tr>
+    <%- end %>
+  </table>
+
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:first-child {background: #dddddd}
+  </style>
+
+<%- rescue %>
+  <p>Data not found.</p>
+<%- end %>
