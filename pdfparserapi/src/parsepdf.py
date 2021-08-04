@@ -19,7 +19,7 @@ class ParsePdf(object):
         # Initialize logger and Orchestrator
         log_level = os.getenv('LOG_LEVEL', 'INFO')
         init_logger('CCAI', log_level)
-        self.logger = logging.getLogger()
+        self.logger = logging.getLogger('CCAI')
         self.config = self.build_config(config_path)
 
         self.logger.info('Setting credential env variables')
