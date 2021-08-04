@@ -15,8 +15,9 @@ CONFIG_PATH = '/config/config.ini'
 config = None
 
 # Initialize logger
-init_logger('CCAI', 'DEBUG')
-logger = logging.getLogger()
+log_level = os.getenv('LOG_LEVEL', 'INFO')
+init_logger('CCAI', log_level)
+logger = logging.getLogger('CCAI')
 
 def build_config(config_path):
     logger.info("Config Path: {}".format(config_path))
@@ -75,13 +76,19 @@ def homepage():
     content = gcp_ocr.parse_all_pages(process_tables=True)
     logger.debug(content)
 
+    # Cleanup the ocr results
     prep = PrepareData(config)
-    key_value_pairs_pp = prep.prep_meta_fields(content[0]['form_element'])
+    # Get key value pairs
+    key_value_pairs_pp = prep.prep_meta_fields(content[0])
+    # Get RCV
     key_value_pairs_pp['RCV'] = prep.get_total_amount(content)
     logger.verbose(key_value_pairs_pp)
     # pp.pprint(key_value_pairs_pp)
+    # Get Tables
+    tables = prep.get_tables(content)
 
-    return jsonify(statusCode = 200, error=error, message=message, data=key_value_pairs_pp, data_full=content)
+    return jsonify(statusCode = 200, error=error, message=message, 
+            data=key_value_pairs_pp, tables=tables, data_full=content)
 
 if __name__ == '__main__':
     app.run(debug=False, port=5051, host="0.0.0.0")
