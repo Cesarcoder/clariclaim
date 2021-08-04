@@ -46,19 +46,20 @@ class Claim < ApplicationRecord
   def extract!
     require 'uri'
     require 'net/http'
+    declarations_page.cache!
 
     uri = URI(ENV['OCR_SERVICE_URL'])
     https = Net::HTTP.new(uri.host, uri.port)
+    https.read_timeout = 1_000
     # https.use_ssl = true
 
     request = Net::HTTP::Post.new(uri.path)
+    request["Content-Type"] = "application/json"
+    request.body = {
+      pdf_path: declarations_page.current_path.split("pdfparserapi")[1]
+    }.to_json
 
-    puts "declarations_page.url"
-    puts declarations_page.url
-
-    request['pdf_path'] = declarations_page.url
     response = https.request(request)
-
     update_columns(meta: JSON.parse(response.body))
   end
 

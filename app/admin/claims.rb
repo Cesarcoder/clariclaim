@@ -87,7 +87,7 @@ ActiveAdmin.register Claim do
       column do
         panel "Claim Meta" do
           attributes_table_for claim do
-            claim&.meta&.each do |key, val|
+            claim&.meta["data"]&.each do |key, val|
               row key.to_sym do
                 val
               end
