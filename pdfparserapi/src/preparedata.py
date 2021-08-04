@@ -81,7 +81,8 @@ class PrepareData(object):
                     processed[self.fm[ele]] = " ".join(data['form_element'][ele])
 
         # If company is empty look for paragraph to find the company
-        processed['company'] = self.get_company(data['paragraph'])
+        if processed['company'] == '':
+            processed['company'] = self.get_company(data['paragraph'])
         
         return processed
 
