@@ -80,12 +80,15 @@ def homepage():
     prep = PrepareData(config)
     # Get key value pairs
     key_value_pairs_pp = prep.prep_meta_fields(content[0])
-    # Get RCV
-    key_value_pairs_pp['RCV'] = prep.get_total_amount(content)
-    logger.verbose(key_value_pairs_pp)
-    # pp.pprint(key_value_pairs_pp)
+    
     # Get Tables
     tables = prep.get_tables(content)
+
+    # Get RCV
+    key_value_pairs_pp['RCV'] = prep.get_total_amount(content, tables)
+    logger.verbose(key_value_pairs_pp)
+    # pp.pprint(key_value_pairs_pp)
+    
 
     return jsonify(statusCode = 200, error=error, message=message, 
             data=key_value_pairs_pp, tables=tables, data_full=content)

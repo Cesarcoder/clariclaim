@@ -1,8 +1,9 @@
 import os
 import json
 import pandas as pd
-os.environ["LOG_LEVEL"] = "VERBOSE"
+# os.environ["LOG_LEVEL"] = "VERBOSE"
 # os.environ["LOG_LEVEL"] = "DEBUG"
+os.environ["LOG_LEVEL"] = "INFO"
 
 from parsepdf import ParsePdf
 parse_pdf = ParsePdf('config/config-local.ini')
@@ -56,21 +57,28 @@ final_value = pd.read_excel('Data/Final Value.xlsx', sheet_name='Sheet1', engine
 final_value['Prediction'] = ''
 for idx, row in final_value.iterrows():
     file_name = row['File Name']
+
+    # file_name = 'zhoa 1st offer.json'
+
     if not file_name.endswith('.json'):
         continue
     f = open(os.path.join(json_dump_path, file_name), encoding="utf8")
     data = json.load(f)
 
-    # amount = parse_pdf.prep.get_total_amount(data)
-    # final_value.loc[idx, 'Prediction'] = amount
-    # print(file_name, '\t', row['RCV'], '\t', amount)
+    tables = parse_pdf.prep.get_tables(data)
+    # print(pd.DataFrame(tables))
+
+    amount = parse_pdf.prep.get_total_amount(data, tables)
+    final_value.loc[idx, 'Prediction'] = amount
+    print(file_name, '\t', row['RCV'], '\t', amount)
     
     # company = parse_pdf.prep.prep_meta_fields(data[0])
     # print(file_name, company['company'])
 
-    tabels = parse_pdf.prep.get_tables(data)
-    # print(tabels)
+    
+
     # break 
+
     # if file_name == 'Shattuck revised.json':
     #     import pdb
     #     pdb.set_trace()
