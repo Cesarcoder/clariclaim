@@ -2,26 +2,22 @@
 /* Your custom styles below */
 /*============================================================================================*/
 
-
 #logo_home h1 a {
-    width: 58px;
-    height: 58px;
     display: block;
-    background-image: url(../img/logo.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 48px 48px;
+    width: 180px;
+    height: auto;
+    background-image: none;
     text-indent: -9999px;
-    /* background-color: white; */
-    padding: 20px;
+}
 
+#logo_home img {
+  margin-top: 4px;
+  margin-left: 6px;
+  width: 190px;
 }
 only screen and (min-device-pixel-ratio: 2) {
     #logo_home h1 a {
-        background-image: url(../img/logo_2x.png);
-        background-size: 48px 48px;
-        background-color: white;
-        padding: 20px;
+      background-image: none;
     }
 }
 
