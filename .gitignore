@@ -41,5 +41,7 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
+*.pem
+*.pub
 
 /pdfparserapi/pdfs/claim/*
