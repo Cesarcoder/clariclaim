@@ -4,8 +4,10 @@ class PdfUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  #storage :file
+  # storage :file
   storage :fog
+  cache_storage :file
+  delete_tmp_file_after_storage :false
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
