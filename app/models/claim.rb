@@ -46,7 +46,7 @@ class Claim < ApplicationRecord
   def extract!
     require 'uri'
     require 'net/http'
-    doc = declarations_page
+    doc = insurance_estimate
     doc.cache_stored_file! if !doc.cached?
 
     uri = URI(ENV['OCR_SERVICE_URL'])
