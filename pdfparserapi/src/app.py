@@ -11,7 +11,8 @@ from gcpocrtable import GcpOcrTable
 
 app = Flask(__name__, instance_relative_config=True)
 
-CONFIG_PATH = '/config/config.ini'
+# Get config path from enviornment variable
+CONFIG_PATH = os.getenv('CONFIG_PATH', '/config/config.ini')
 config = None
 
 # Initialize logger
@@ -89,7 +90,6 @@ def homepage():
     logger.verbose(key_value_pairs_pp)
     # pp.pprint(key_value_pairs_pp)
     
-
     return jsonify(statusCode = 200, error=error, message=message, 
             data=key_value_pairs_pp, tables=tables, data_full=content)
 

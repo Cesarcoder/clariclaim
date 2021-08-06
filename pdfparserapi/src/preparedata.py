@@ -54,6 +54,10 @@ class PrepareData(object):
             'Colonial Adjustment, Inc.': ['Colonial Adjustment, Inc.'],
             'Insurance Adjustment Service, Inc.': ['Insurance Adjustment Service, Inc.'],
         }
+        self.table_header_clean={'qty':'quantity',
+            'quantity unit':'quantity',
+            'price':'unit price',
+        }
         
     def get_company(self, data):
         for comp_name in self.company_map:
@@ -198,7 +202,7 @@ class PrepareData(object):
                     continue
                 table_df = pd.DataFrame(table)
                 table_df.columns = table_df.columns.str.lower()
-                table_df.rename({"qty":'quantity'}, axis='columns', inplace=True)
+                table_df.rename(self.table_header_clean, axis='columns', inplace=True)
                 jaccard_sim = self.jaccard_similarity(table_df.columns, column_list)
                 if jaccard_sim >= 0.5:
                     table_df['page_no'] = page_no

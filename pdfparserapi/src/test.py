@@ -58,7 +58,7 @@ final_value['Prediction'] = ''
 for idx, row in final_value.iterrows():
     file_name = row['File Name']
 
-    # file_name = 'zhoa 1st offer.json'
+    file_name = 'zhoa 1st offer.json'
 
     if not file_name.endswith('.json'):
         continue
@@ -66,7 +66,12 @@ for idx, row in final_value.iterrows():
     data = json.load(f)
 
     tables = parse_pdf.prep.get_tables(data)
-    # print(pd.DataFrame(tables))
+    table_df = pd.DataFrame(tables)
+    print(table_df.loc[table_df['page_no'] == 4])
+    import pdb
+    pdb.set_trace()
+
+    table_df.loc[table_df['page_no'] == 4]
 
     amount = parse_pdf.prep.get_total_amount(data, tables)
     final_value.loc[idx, 'Prediction'] = amount

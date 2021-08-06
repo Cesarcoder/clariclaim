@@ -11,6 +11,7 @@ services:
         environment:
             # Can take values DEBUG INFO WARNING ERROR CRITICAL
             LOG_LEVEL: DEBUG
+            CONFIG_PATH: /config/config.ini
         volumes:
             - ./src:/clariclaim/src
             - ./pdfs:/pdfs/
