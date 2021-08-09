@@ -4,6 +4,13 @@
     <div class="row">
 
         <div class="col-lg-10">
+            <div class="form-group">
+              <label>Insurance Estimate<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
+              <div class="fileupload">
+                <input id="insurance_estimate" type="file" name="claim[insurance_estimate]" accept="application/pdf" onchange="parsePdf()" required>
+              </div>
+            </div>
+
             <div class="form-group select">
                 <label>What type of Loss?</label>
                 <div class="styled-select">
@@ -32,13 +39,6 @@
               <label>Date of Loss</label>
               <div class="form-group">
                 <input type="date" id="loss_date" name="claim[loss_date]" max="<%= Date.today %>"  class="form-control" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Insurance Estimate<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
-              <div class="fileupload">
-                <input id="insurance_estimate" type="file" name="claim[insurance_estimate]" accept="application/pdf" onchange="parsePdf()" required>
               </div>
             </div>
 
