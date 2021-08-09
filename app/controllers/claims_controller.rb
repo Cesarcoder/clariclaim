@@ -22,6 +22,30 @@ class ClaimsController < ApplicationController
 
   def success; end
 
+  def insurance_estimate
+    FileUtils.cp(params[:file].tempfile.path, "#{Rails.root}/pdfparserapi/pdfs/")
+
+    temp_filename = params[:file].tempfile.path.split("/").last
+
+    require 'uri'
+    require 'net/http'
+
+    uri = URI(ENV['OCR_SERVICE_URL'])
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.read_timeout = 1_000
+
+    request = Net::HTTP::Post.new(uri.path)
+    request["Content-Type"] = "application/json"
+    request.body = {
+      pdf_path: "/pdfs/#{temp_filename}"
+    }.to_json
+
+    response = https.request(request)
+    budget = JSON.parse(response.body)['data']['RCV'] rescue nil
+
+    render json: { data: Package.find_package(budget).try(:id), status: :ok }
+  end
+
   def extract
     puts "extracted"
     render json: {
