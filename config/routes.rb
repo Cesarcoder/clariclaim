@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :claims do
     collection do
       get :success
+      post :insurance_estimate
       post :extract # mock
     end
   end

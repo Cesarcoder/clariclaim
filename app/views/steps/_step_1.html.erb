@@ -35,6 +35,13 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label>Insurance Estimate<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
+              <div class="fileupload">
+                <input id="insurance_estimate" type="file" name="claim[insurance_estimate]" accept="application/pdf" onchange="parsePdf()" required>
+              </div>
+            </div>
+
             <label>Property Type</label>
 
             <div class="form-group radio_questions">
@@ -92,13 +99,6 @@
               <label>Declarations Page<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
               <div class="fileupload">
                 <input type="file" name="claim[declarations_page]" accept="application/pdf">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Insurance Estimate<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
-              <div class="fileupload">
-                <input type="file" name="claim[insurance_estimate]" accept="application/pdf" required>
               </div>
             </div>
 
@@ -177,6 +177,28 @@
       document.getElementById("supplemental_claim").style.display = "none";
       document.getElementById("supplemental_claim").required = false;
     }
+  }
+
+  function parsePdf() {
+    var input = document.getElementById("insurance_estimate");
+
+    var fd = new FormData();
+    fd.append('file', input.files[0] );
+
+    $.ajax({
+      url: '/claims/insurance_estimate',
+      data: fd,
+      processData: false,
+      contentType: false,
+      type: 'POST',
+      success: function(data){
+        console.log(data);
+
+        var el = document.getElementById(`package_${data["data"]}`);
+        el.classList.add("checked");
+        el.parentElement.classList.add("checked");
+      }
+    });
   }
 </script>
 
