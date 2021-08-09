@@ -54,6 +54,10 @@ class PrepareData(object):
             'Colonial Adjustment, Inc.': ['Colonial Adjustment, Inc.'],
             'Insurance Adjustment Service, Inc.': ['Insurance Adjustment Service, Inc.'],
         }
+        self.table_header_clean={'qty':'quantity',
+            'quantity unit':'quantity',
+            'price':'unit price',
+        }
         
     def get_company(self, data):
         for comp_name in self.company_map:
@@ -103,7 +107,7 @@ class PrepareData(object):
         
         return True
 
-    def get_total_amount(self, data):
+    def _get_total_amount(self, data, field_type='RCV'):
         # As last page likely to have final amount
         # Loop from last page to first page
         amount_final = 0.0
@@ -116,22 +120,21 @@ class PrepareData(object):
                 if len(table) < 1:
                     continue
                 # If RCV in final records of the table
-                if 'RCV' in table[-1]:
-                    amount = table[-1]['RCV']
-                    self.logger.verbose('Parsed amount table: {}'.format(amount))
+                if field_type in table[-1]:
+                    amount = table[-1][field_type]
+                    self.logger.verbose('Field: {} Parsed amount table: {}'.format(field_type, amount))
                     if self._is_valid_amount(amount):
                         found_amount += 1
                         amount_final = max(amount_final, self.get_valid_number(amount))
                     elif 'Total' in page['form_element']:
                         amount = page['form_element']['Total'][0]
-                        self.logger.verbose('Parsed amount table total: {}'.format(amount))
+                        self.logger.verbose('Field: {} Parsed amount table: {}'.format(field_type, amount))
                         if self._is_valid_amount(amount):
                             found_amount += 1
                             amount_final = max(amount_final, self.get_valid_number(amount))
-                            
                 elif 'Total' in page['form_element']:
                     amount = page['form_element']['Total'][0]
-                    self.logger.verbose('Parsed amount page total: {}'.format(amount))
+                    self.logger.verbose('Field: {} Parsed amount table: {}'.format(field_type, amount))
                     if self._is_valid_amount(amount):
                         found_amount += 1
                         amount_final = max(amount_final, self.get_valid_number(amount))
@@ -151,6 +154,31 @@ class PrepareData(object):
                 amount = ''
         
         if amount_final > 0:
+            return amount_final
+        
+        return 0.0
+        
+    def get_total_amount(self, data, tables):
+        
+        rcv = self._get_total_amount(data, field_type='RCV')
+        acv = self._get_total_amount(data, field_type='ACV')
+
+        def _get_float(x):
+            try:
+                x = self.get_valid_number(x)
+            except:
+                return 0.0
+            return x
+        
+        tables = pd.DataFrame(tables)
+        table_amount = 0.0
+        if 'rcv' in tables.columns:
+            tables['RCV_float'] = tables['rcv'].apply(lambda x: _get_float(x))
+            table_amount = tables['RCV_float'].max()
+        
+        self.logger.debug("RCV: {}, ACV: {} Table Amount: {}".format(rcv, acv, table_amount))
+        amount_final = max(rcv, acv, table_amount)
+        if amount_final > 0:
             return "{:.2f}".format(amount_final)
         else:
             return ''
@@ -163,21 +191,22 @@ class PrepareData(object):
         return len(intersection) / len(un)
 
     def get_tables(self, data):
-        column_list = set(['DESCRIPTION', 'QUANTITY', 'UNIT PRICE', 'TAX', 'O&P', 'RCV', 'DEPREC.', 'ACV'])
-        column_list = set(['description', 'quantity', 'unit price', 'tax', 'o&p', 'rcv', 'deprec.', 'acv'])
+        column_list = ['DESCRIPTION', 'QUANTITY', 'UNIT PRICE', 'TAX', 'O&P', 'RCV', 'DEPREC.', 'ACV']
+        column_list = ['description', 'quantity', 'unit price', 'tax', 'o&p', 'rcv', 'deprec.', 'acv']
         result = []
-        for page in data:
+        for page_no, page in enumerate(data, 1):
             tables = page['table']
             # Loop tables in reverse order
-            for table in tables:
+            for table_no, table in enumerate(tables, 1):
                 if len(table) < 1:
                     continue
                 table_df = pd.DataFrame(table)
                 table_df.columns = table_df.columns.str.lower()
-                table_df.rename({"qty":'quantity'}, axis='columns', inplace=True)
-                
+                table_df.rename(self.table_header_clean, axis='columns', inplace=True)
                 jaccard_sim = self.jaccard_similarity(table_df.columns, column_list)
                 if jaccard_sim >= 0.5:
+                    table_df['page_no'] = page_no
+                    table_df['table_no'] = table_no
                     result.append(table_df)
         if len(result) > 0:
             result = pd.concat(result)
@@ -185,7 +214,7 @@ class PrepareData(object):
             for column_name in column_list:
                 if column_name not in result.columns:
                     result[column_name] = ''
-            result = result[column_list]
+            result = result[['page_no', 'table_no'] + column_list]
             result.fillna('', inplace=True)
             result = result.to_dict('records')
         return result
