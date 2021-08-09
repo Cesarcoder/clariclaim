@@ -1,6 +1,49 @@
 <div class="submit step">
 
-    <h3 class="main_question"><strong>2/2</strong>Choose your packages</h3>
+    <h3 class="main_question"><strong>2/2</strong>Please fill with your details</h3>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input type="text" name="claim[first_name]" class="required form-control" placeholder="First name">
+            </div>
+            <div class="form-group">
+                <input type="text" name="claim[last_name]" class="required form-control" placeholder="Last name">
+            </div>
+            <div class="form-group">
+                <input type="text" name="claim[phone]" class="required form-control" placeholder="Phone">
+            </div>
+            <div class="form-group">
+              <input type="email" name="claim[email]" class="required form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <div class="styled-select">
+                    <select class="required" name="claim[contact_preference]">
+                        <option value="" selected>Select your contact preference</option>
+                        <option value="phone">Phone</option>
+                        <option value="email">Email</option>
+                    </select>
+                </div>
+            </div>
+        </div><!-- /col-sm-6 -->
+
+        <div class="col-sm-6">
+            <div class="form-group">
+              <input type="text" name="claim[address]" class="required form-control" placeholder="Address">
+            </div>
+            <div class="form-group">
+                <input type="text" name="claim[city]" class="required form-control" placeholder="City">
+            </div>
+            <div class="form-group">
+                <input type="text" name="claim[state]" class="required form-control" placeholder="State">
+            </div>
+            <div class="form-group">
+                <input type="text" name="claim[zipcode]" class="required form-control" placeholder="Zipcode">
+            </div>
+        </div><!-- /col-sm-6 -->
+    </div><!-- /row -->
+
+    <h3 class="main_question"><br>Choose your packages</h3>
     <input type="hidden" id="package" name="claim[package_id]" value="">
 
     <div class="form-group radio_questions">
@@ -81,50 +124,6 @@
             <input id="addons_103" name="claim[addons_103]" type="radio" value="103" class="icheck" onclick="toogleAddons(this, 103);">
         </label>
     </div>
-
-
-    <h3 class="main_question"><br>Please fill with your details</h3>
-
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <input type="text" name="claim[first_name]" class="required form-control" placeholder="First name">
-            </div>
-            <div class="form-group">
-                <input type="text" name="claim[last_name]" class="required form-control" placeholder="Last name">
-            </div>
-            <div class="form-group">
-                <input type="text" name="claim[phone]" class="required form-control" placeholder="Phone">
-            </div>
-            <div class="form-group">
-              <input type="email" name="claim[email]" class="required form-control" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <div class="styled-select">
-                    <select class="required" name="claim[contact_preference]">
-                        <option value="" selected>Select your contact preference</option>
-                        <option value="phone">Phone</option>
-                        <option value="email">Email</option>
-                    </select>
-                </div>
-            </div>
-        </div><!-- /col-sm-6 -->
-
-        <div class="col-sm-6">
-            <div class="form-group">
-              <input type="text" name="claim[address]" class="required form-control" placeholder="Address">
-            </div>
-            <div class="form-group">
-                <input type="text" name="claim[city]" class="required form-control" placeholder="City">
-            </div>
-            <div class="form-group">
-                <input type="text" name="claim[state]" class="required form-control" placeholder="State">
-            </div>
-            <div class="form-group">
-                <input type="text" name="claim[zipcode]" class="required form-control" placeholder="Zipcode">
-            </div>
-        </div><!-- /col-sm-6 -->
-    </div><!-- /row -->
 </div><!-- /step 2-->
 
 <script src="js/jquery-3.5.1.min.js"></script>
