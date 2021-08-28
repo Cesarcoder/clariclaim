@@ -30,7 +30,8 @@ set :shared_dirs, fetch(:shared_dirs, []).push('log', 'storage', 'tmp/pids', 'tm
 set :shared_files, fetch(:shared_files, []).push(
   'config/database.yml',
   'config/puma.rb',
-  'config/master.key'
+  'config/master.key',
+  '.env'
 )
 
 # This task is the environment that is loaded for all remote run commands, such as
