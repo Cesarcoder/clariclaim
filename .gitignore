@@ -47,3 +47,4 @@ yarn-debug.log*
 config/webpack/plugins/*
 
 /pdfparserapi/pdfs/claim/*
+/pdfparserapi/pdfs/*
