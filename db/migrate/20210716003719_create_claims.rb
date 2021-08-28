@@ -6,6 +6,7 @@ class CreateClaims < ActiveRecord::Migration[6.1]
       t.string  :loss_location
       t.string  :loss_location_point
       t.json    :loss_location_meta
+      t.string  :loss_location_start
       t.date    :loss_date
       t.string  :property_type
       t.boolean :other_unit_affected

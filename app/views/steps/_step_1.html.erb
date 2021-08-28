@@ -17,7 +17,8 @@
                     <select class="required" id="loss_type" name="claim[loss_type]" onchange="showTypeOfLoseInput()">
                       <option value="" selected>Select</option>
                       <option value="Fire">Fire</option>
-                      <option value="Wind/Hail">Wind/Hail</option>
+                      <option value="Wind">Wind</option>
+                      <option value="Hail">Hail</option>
                       <option value="Water">Water</option>
                       <option value="Frozen Pipe">Frozen Pipe</option>
                       <option value="Collapse">Collapse</option>
@@ -35,13 +36,9 @@
                 <input type="text" id="named-strom" name="claim[loss_type_desc]" class="form-control" placeholder="Enter Named Storm type of loss here">
             </div>
 
-            <div class="form-group select">
-              <label>Date of Loss</label>
-              <div class="form-group">
-                <input type="date" id="loss_date" name="claim[loss_date]" max="<%= Date.today %>"  class="form-control" required>
-              </div>
+            <div class="form-group">
+                <input type="text" id="other" name="claim[loss_type_desc]" class="form-control" placeholder="Enter other type of loss here">
             </div>
-
             <label>Property Type</label>
 
             <div class="form-group radio_questions">
@@ -94,6 +91,13 @@
                     <input type="hidden" id="loss_location_meta" name="claim[loss_location_meta]" value="{}">
                 </div>
             </div><!-- /col-sm-6 -->
+
+            <div class="form-group select">
+              <label>Where did the loss start?</label>
+              <div class="form-group">
+                <input type="text" id="loss_location_start" name="claim[loss_location_start]" class="form-control" required>
+              </div>
+            </div>
 
             <div class="form-group">
               <label>Declarations Page<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>

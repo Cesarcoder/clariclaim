@@ -68,8 +68,8 @@ class ClaimsController < ApplicationController
     def claim_params
       params.require(:claim).permit(
         :loss_type, :loss_date, :loss_type_desc, :property_type,
-        :other_unit_affected, :loss_location, :loss_location_point,
-        :declarations_page, :insurance_estimate,
+        :other_unit_affected, :loss_location, :loss_location_start,
+        :loss_location_point, :declarations_page, :insurance_estimate,
         :damage_outside_insurance, :package_id, :addons_data, :first_name,
         :last_name, :address, :city, :state, :zipcode, :phone, :email,
         :contact_preference
