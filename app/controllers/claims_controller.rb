@@ -63,6 +63,16 @@ class ClaimsController < ApplicationController
     }
   end
 
+  def export
+    pdf = Prawn::Document.new()
+    pdf.text "SAMPLE DOC HERE"
+    pdf.text "Claim Number: FLP6842"
+    pdf.text "Policy Number: FLP6842"
+    pdf.text "Type of Loss: Water Damage"
+    pdf.text "Date of Loss:	7/9/2021 12:00 AM"
+    send_data pdf.render, filename: "claim-#{Time.now}.pdf", type: "application/pdf"
+  end
+
   private
     # Only allow a list of trusted parameters through.
     def claim_params

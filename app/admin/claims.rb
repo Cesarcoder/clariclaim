@@ -100,6 +100,14 @@ ActiveAdmin.register Claim do
         #     html
         #   end
         # end
+
+        panel "Export PDF" do
+          attributes_table_for claim do
+            render partial: 'export', locals: {
+              claim: claim
+            }
+          end
+        end
       end
 
       column do

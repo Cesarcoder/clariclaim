@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get :success
       post :insurance_estimate
       post :extract # mock
+      get :export # mock
     end
   end
 
