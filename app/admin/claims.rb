@@ -90,16 +90,16 @@ ActiveAdmin.register Claim do
           row :created_at
         end
 
-        panel "Direct Contact" do
-          div do
-            html = ""
-            html += div text_area(:message, :content, { style: 'width: 100%;', rows: 8, placeholder: "Your message here...", ontype: 'alert(sdsd)' }).html_safe
-            html += br
-            html += button("Send as SMS").html_safe
-            html += button("<a href='#0' style='color: white;text-decoration: none;'> Send as Email</a>".html_safe, { style: 'float: right; color: white;'}).html_safe
-            html
-          end
-        end
+        # panel "Direct Contact" do
+        #   div do
+        #     html = ""
+        #     html += div text_area(:message, :content, { style: 'width: 100%;', rows: 8, placeholder: "Your message here...", ontype: 'alert(sdsd)' }).html_safe
+        #     html += br
+        #     html += button("Send as SMS").html_safe
+        #     html += button("<a href='#0' style='color: white;text-decoration: none;'> Send as Email</a>".html_safe, { style: 'float: right; color: white;'}).html_safe
+        #     html
+        #   end
+        # end
       end
 
       column do
