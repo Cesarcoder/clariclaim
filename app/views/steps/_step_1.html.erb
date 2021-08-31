@@ -176,10 +176,11 @@
     var loss_type = document.getElementById("damage_outside_insurance").value;
     if (loss_type == 'Yes') {
       document.getElementById("supplemental_claim").style.display = "block";
-      document.getElementById("supplemental_claim").required = true;
+      // document.getElementById("supplemental_claim").required = true;
     } else {
       document.getElementById("supplemental_claim").style.display = "none";
-      document.getElementById("supplemental_claim").required = false;
+      // document.getElementById("supplemental_claim").style.visibility = "hidden";
+      document.getElementById("supplemental_claim").innerHTML = "";
     }
   }
 
