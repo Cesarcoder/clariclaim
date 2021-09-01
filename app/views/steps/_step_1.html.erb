@@ -39,6 +39,14 @@
             <div class="form-group">
                 <input type="text" id="other" name="claim[loss_type_desc]" class="form-control" placeholder="Enter other type of loss here">
             </div>
+
+            <div class="form-group select">
+              <label>Date of Loss</label>
+              <div class="form-group">
+                <input type="date" id="loss_date" name="claim[loss_date]" max="<%= Date.today %>"  class="form-control" required>
+              </div>
+            </div>
+
             <label>Property Type</label>
 
             <div class="form-group radio_questions">

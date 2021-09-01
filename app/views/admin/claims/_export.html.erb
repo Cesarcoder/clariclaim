@@ -3,19 +3,19 @@
     <ol>
       <li class="input stringish">
         <label class="label">Claim Number</label>
-        <input maxlength="255" type="text" value="admin@example.com" name="claim[claim_number]">
+        <input maxlength="255" type="text" value="<%= claim&.meta['data']['claim_number'] rescue '' %>" name="claim[claim_number]">
       </li>
       <li class="input stringish">
         <label class="label">Policy Number</label>
-        <input maxlength="255" type="text" value="admin@example.com" name="claim[policy_number]">
+        <input maxlength="255" type="text" value="<%= claim&.meta['data']['policy_number'] rescue '' %>" name="claim[policy_number]">
       </li>
       <li class="input stringish">
         <label class="label">Type of Loss</label>
-        <input maxlength="255" type="text" value="admin@example.com" name="claim[type_of_loss]">
+        <input maxlength="255" type="text" value="<%= claim&.meta['data']['type_of_loss'] rescue '' %>" name="claim[type_of_loss]">
       </li>
       <li class="input">
         <label class="label">Date of Loss</label>
-        <input type="date" style="width: fit-content;" value="admin@example.com" name="claim[date_of_loss]">
+        <input type="date" style="width: fit-content;" value="<%= claim&.loss_date rescue '' %>" name="claim[loss_date]">
       </li>
     </ol>
   </fieldset>
