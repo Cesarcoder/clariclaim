@@ -1,3 +1,29 @@
+<form novalidate="novalidate">
+  <fieldset class="inputs">
+    <ol>
+      <li class="input stringish">
+        <label class="label">Claim Number</label>
+        <input maxlength="255" type="text" value="admin@example.com" name="claim[claim_number]">
+      </li>
+      <li class="input stringish">
+        <label class="label">Policy Number</label>
+        <input maxlength="255" type="text" value="admin@example.com" name="claim[policy_number]">
+      </li>
+      <li class="input stringish">
+        <label class="label">Type of Loss</label>
+        <input maxlength="255" type="text" value="admin@example.com" name="claim[type_of_loss]">
+      </li>
+      <li class="input">
+        <label class="label">Date of Loss</label>
+        <input type="date" style="width: fit-content;" value="admin@example.com" name="claim[date_of_loss]">
+      </li>
+    </ol>
+  </fieldset>
+
+<!-- <fieldset class="actions"><ol><li class="action input_action " id="admin_user_submit_action"><input type="submit" name="commit" value="Update Admin user" data-disable-with="Update Admin user"></li><li class="cancel"><a href="/admin/admin_users">Cancel</a></li></ol></fieldset> -->
+
+</form>
+
 <div class="buttons" style="float: right;">
   <a href="<%= export_claims_url %>">
     <input type="submit" name="commit" value="Export" data-disable-with="Export">

@@ -100,14 +100,6 @@ ActiveAdmin.register Claim do
         #     html
         #   end
         # end
-
-        panel "Export PDF" do
-          attributes_table_for claim do
-            render partial: 'export', locals: {
-              claim: claim
-            }
-          end
-        end
       end
 
       column do
@@ -131,6 +123,14 @@ ActiveAdmin.register Claim do
             end
           end
         end if claim.meta && !claim.meta.empty?
+
+        panel "Export PDF" do
+          attributes_table_for claim do
+            render partial: 'export', locals: {
+              claim: claim
+            }
+          end
+        end
 
         panel "Street View Maps" do
           attributes_table_for claim do
