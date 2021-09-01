@@ -87,6 +87,28 @@ class Claim < ApplicationRecord
     phone
   end
 
+  def meta_claim_number
+    meta['data']['claim_number'] rescue ''
+  end
+
+  def meta_policy_number
+    meta['data']['policy_number'] rescue ''
+  end
+
+  def meta_loss_type
+    type_of_loss = meta['data']['type_of_loss'] rescue ''
+
+    type_of_loss.present? ? type_of_loss : loss_type
+  end
+
+  def meta_insured
+    meta['data']['insured'] rescue ''
+  end
+
+  def meta_estimator
+    meta['data']['estimator'] rescue ''
+  end
+
   private
 
   def loss_date_cannot_be_in_the_future
