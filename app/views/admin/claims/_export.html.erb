@@ -1,4 +1,6 @@
 <form novalidate="novalidate">
+  <center><b>Review Claim Data</b></center>
+  <br>
   <fieldset class="inputs">
     <ol>
       <li class="input stringish">
@@ -20,12 +22,61 @@
     </ol>
   </fieldset>
 
+  <center><b>Review Rooms</b></center>
+  <br>
+  <fieldset class="inputs">
+    <ol>
+      <li class="input stringish">
+        <label class="label">Room Name</label>
+        <input maxlength="255" type="text" value="">
+        <br>
+        <br>
+        <fieldset class="inputs">
+          <ol>
+            <li class="input stringish">
+              <label class="label">Description</label>
+              <input maxlength="255" type="text" value="">
+            </li>
+            <li class="input stringish">
+              <label class="label">Quantity</label>
+              <input maxlength="255" type="text" value="">
+            </li>
+            <li class="input stringish">
+              <label class="label">Unit Price</label>
+              <input maxlength="255" type="text" value="">
+            </li>
+            <li class="input stringish">
+              <label class="label">ACV</label>
+              <input maxlength="255" type="text" value="">
+            </li>
+            <li class="input stringish">
+              <label class="label">RCV</label>
+              <input maxlength="255" type="text" value="">
+            </li>
+          </ol>
+        </fieldset>
+      </li>
+    </ol>
+  </fieldset>
+  <div class="buttons" style="float: right;">
+    <input type="button" name="add" value="Add Another Room" data-disable-with="Add Another Room">
+  </div>
+
+
 <!-- <fieldset class="actions"><ol><li class="action input_action " id="admin_user_submit_action"><input type="submit" name="commit" value="Update Admin user" data-disable-with="Update Admin user"></li><li class="cancel"><a href="/admin/admin_users">Cancel</a></li></ol></fieldset> -->
 
 </form>
 
+<br><br><br>
+<hr>
+<br><br><br>
 <div class="buttons" style="float: right;">
   <a href="<%= export_claims_url(format: :pdf) %>" target="_blank" >
     <input type="submit" name="commit" value="Export" data-disable-with="Export">
   </a>
 </div>
+
+
+<script type="text/javascript">
+
+</script>
