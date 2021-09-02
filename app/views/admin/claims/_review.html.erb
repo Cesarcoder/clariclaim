@@ -5,33 +5,33 @@
     <ol>
       <li class="input stringish">
         <label class="label">Claim Number</label>
-        <input maxlength="255" type="text" value="<%= claim&.meta['data']['claim_number'] rescue '' %>" name="claim[claim_number]">
+        <input maxlength="255" type="text" value="<%= claim&.meta['data']['claim_number'] rescue '' %>" name="review[claim_number]">
       </li>
       <li class="input stringish">
         <label class="label">Policy Number</label>
-        <input maxlength="255" type="text" value="<%= claim&.meta['data']['policy_number'] rescue '' %>" name="claim[policy_number]">
+        <input maxlength="255" type="text" value="<%= claim&.meta['data']['policy_number'] rescue '' %>" name="review[policy_number]">
       </li>
       <li class="input stringish">
         <label class="label">Type of Loss</label>
-        <input maxlength="255" type="text" value="<%= claim&.meta['data']['type_of_loss'] rescue '' %>" name="claim[type_of_loss]">
+        <input maxlength="255" type="text" value="<%= claim&.meta['data']['type_of_loss'] rescue '' %>" name="review[type_of_loss]">
       </li>
       <li class="input">
         <label class="label">Date of Loss</label>
-        <input type="date" style="width: fit-content;" value="<%= claim&.loss_date rescue '' %>" name="claim[loss_date]">
+        <input type="date" style="width: fit-content;" value="<%= claim&.loss_date rescue '' %>" name="review[loss_date]">
       </li>
     </ol>
   </fieldset>
 
   <center><b>Review Items</b></center>
   <br>
-  <fieldset class="inputs">
+  <fieldset class="inputs" style="padding: 20px;">
     <ol>
       <li class="input stringish">
         <label class="label">Item Name</label>
         <input maxlength="255" type="text" value="Room: (living Room)">
         <br>
         <br>
-        <fieldset class="inputs">
+        <fieldset class="inputs" style="padding: 12px; margin: 0 30px;">
           <ol>
             <li class="input stringish">
               <label class="label">Description</label>
@@ -61,10 +61,11 @@
         </fieldset>
       </li>
     </ol>
+    <div class="buttons" style="float: right;">
+      <input type="button" name="add" value="Add New Item" data-disable-with="Add New Item" onclick="alert();">
+    </div>
   </fieldset>
-  <div class="buttons" style="float: right;">
-    <input type="button" name="add" value="Add New Item" data-disable-with="Add New Item" onclick="alert();">
-  </div>
+
   <br><br><br>
   <%- begin %>
     <%- column = @claim.meta["tables"].first.keys %>
