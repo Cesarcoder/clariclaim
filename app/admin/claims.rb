@@ -101,9 +101,9 @@ ActiveAdmin.register Claim do
         #   end
         # end
 
-        panel "Export PDF" do
+        panel "Reviews" do
           attributes_table_for claim do
-            render partial: 'export', locals: {
+            render partial: 'review', locals: {
               claim: claim
             }
           end

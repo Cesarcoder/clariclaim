@@ -28,14 +28,14 @@
     <ol>
       <li class="input stringish">
         <label class="label">Item Name</label>
-        <input maxlength="255" type="text" value="">
+        <input maxlength="255" type="text" value="Room: (living Room)">
         <br>
         <br>
         <fieldset class="inputs">
           <ol>
             <li class="input stringish">
               <label class="label">Description</label>
-              <input maxlength="255" type="text" value="">
+              <input maxlength="255" type="text" value="Remove and Reset Contents">
             </li>
             <li class="input stringish">
               <label class="label">Quantity</label>
@@ -43,6 +43,10 @@
             </li>
             <li class="input stringish">
               <label class="label">Unit Price</label>
+              <input maxlength="255" type="text" value="1">
+            </li>
+            <li class="input stringish">
+              <label class="label">Price</label>
               <input maxlength="255" type="text" value="">
             </li>
             <li class="input stringish">
@@ -51,7 +55,7 @@
             </li>
             <li class="input stringish">
               <label class="label">RCV</label>
-              <input maxlength="255" type="text" value="">
+              <input maxlength="255" type="text" value="$500.00">
             </li>
           </ol>
         </fieldset>
@@ -59,11 +63,71 @@
     </ol>
   </fieldset>
   <div class="buttons" style="float: right;">
-    <input type="button" name="add" value="Add New Item" data-disable-with="Add New Item">
+    <input type="button" name="add" value="Add New Item" data-disable-with="Add New Item" onclick="alert();">
   </div>
+  <br><br><br>
+  <%- begin %>
+    <%- column = @claim.meta["tables"].first.keys %>
 
+    <table>
+      <h3>Room: (living Room)</h3>
+      <tr>
+        <th></th>
+        <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE", "ACV", "RCV"].each_with_index.each do |key| %>
+          <th>
+            <%= key.upcase %>
+          </th>
+        <%- end %>
+      </tr>
+      <%- (1..2).each_with_index do |row, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td>
+            Remove and Reset Contents
+          </td>
+          <td>
+          </td>
+          <td>
+            1
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            $500.00
+          </td>
+          <td>
+            X
+          </td>
+        <tr>
+      <%- end %>
+    </table>
 
-<!-- <fieldset class="actions"><ol><li class="action input_action " id="admin_user_submit_action"><input type="submit" name="commit" value="Update Admin user" data-disable-with="Update Admin user"></li><li class="cancel"><a href="/admin/admin_users">Cancel</a></li></ol></fieldset> -->
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        /* text-align: left; */
+        /* padding: 8px; */
+      }
+
+      .attributes_table table td {
+        padding: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+    </style>
+
+  <%- rescue %>
+    <p>Data not found.</p>
+  <%- end %>
+
 
 </form>
 
@@ -71,7 +135,10 @@
 <hr>
 <br><br><br>
 <div class="buttons" style="float: right;">
-  <a href="<%= export_claims_url(format: :pdf) %>" target="_blank" >
+  <a href="<%= export_claim_url(format: :pdf) %>" target="_blank" >
+    <input type="submit" name="commit" value="Save" data-disable-with="Save">
+  </a>
+  <a href="<%= export_claim_url(format: :pdf) %>" target="_blank" >
     <input type="submit" name="commit" value="Export" data-disable-with="Export">
   </a>
 </div>
