@@ -10,7 +10,7 @@ class Claim < ApplicationRecord
 
   validate :loss_date_cannot_be_in_the_future
 
-  after_initialize :set_addons_data
+  after_initialize :set_default_json_data
 
   delegate :name, to: :package, prefix: true, allow_nil: true
 
@@ -110,19 +110,19 @@ class Claim < ApplicationRecord
   end
 
   def review_claim_number
-    review_data['claim_number'] || meta_claim_number
+    review_data['claim_number'] rescue meta_claim_number
   end
 
   def review_policy_number
-    review_data['policy_number'] || meta_policy_number
+    review_data['policy_number'] rescue meta_policy_number
   end
 
   def review_loss_type
-    review_data['loss_type'] || meta_loss_type
+    review_data['loss_type'] rescue meta_loss_type
   end
 
   def review_loss_date
-    review_data['loss_date'] || meta_loss_date
+    review_data['loss_date'] rescue meta_loss_date
   end
 
   private
@@ -133,7 +133,8 @@ class Claim < ApplicationRecord
     end
   end
 
-  def set_addons_data
+  def set_default_json_data
     addons_data = {} if addons_data.nil?
+    review_data = {} if review_data.nil?
   end
 end
