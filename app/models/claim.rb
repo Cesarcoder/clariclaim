@@ -122,7 +122,7 @@ class Claim < ApplicationRecord
   end
 
   def review_loss_date
-    review_data['loss_date'] rescue meta_loss_date
+    review_data['loss_date'] rescue loss_date
   end
 
   private
