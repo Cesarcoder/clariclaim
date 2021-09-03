@@ -109,6 +109,22 @@ class Claim < ApplicationRecord
     meta['data']['estimator'] rescue ''
   end
 
+  def review_claim_number
+    review_data['claim_number'] || meta_claim_number
+  end
+
+  def review_policy_number
+    review_data['policy_number'] || meta_policy_number
+  end
+
+  def review_loss_type
+    review_data['loss_type'] || meta_loss_type
+  end
+
+  def review_loss_date
+    review_data['loss_date'] || meta_loss_date
+  end
+
   private
 
   def loss_date_cannot_be_in_the_future

@@ -64,7 +64,7 @@ class ClaimsController < ApplicationController
   end
 
   def export
-    @claim = Claim.last
+    @claim = Claim.find_by(id: params[:id])
 
     respond_to do |format|
       format.html
@@ -80,6 +80,13 @@ class ClaimsController < ApplicationController
     # pdf.text "Type of Loss: Water Damage"
     # pdf.text "Date of Loss:	7/9/2021 12:00 AM"
     # send_data pdf.render, filename: "claim-#{Time.now}.pdf", type: "application/pdf"
+  end
+
+  def review
+    @claim = Claim.find_by(id: params[:id])
+    @claim.update(review_data: params[:data])
+
+    redirect_to export_claim_url(format: :pdf)
   end
 
   private

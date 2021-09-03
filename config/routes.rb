@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     member do
       get :export
+      post :review
     end
   end
 

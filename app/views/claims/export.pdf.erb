@@ -161,13 +161,13 @@ body {margin-top: 0px;margin-left: 0px;}
 	<TD class="tr7 td4"><P class="p3 ft1">com</P></TD>
 </TR>
 <TR>
-	<TD colspan=2 class="tr8 td5"><P class="p3 ft2">Claim Number: <SPAN class="ft1"><%= @claim.meta_claim_number %></SPAN></P></TD>
-	<TD class="tr8 td2"><P class="p3 ft2">Policy Number: <SPAN class="ft1"><%= @claim.meta_policy_number %></SPAN></P></TD>
-	<TD colspan=2 class="tr8 td7"><P class="p8 ft2">Type of Loss: <SPAN class="ft1"><%= @claim.meta_loss_type %></SPAN></P></TD>
+	<TD colspan=2 class="tr8 td5"><P class="p3 ft2">Claim Number: <SPAN class="ft1"><%= @claim.review_claim_number %></SPAN></P></TD>
+	<TD class="tr8 td2"><P class="p3 ft2">Policy Number: <SPAN class="ft1"><%= @claim.review_policy_number %></SPAN></P></TD>
+	<TD colspan=2 class="tr8 td7"><P class="p8 ft2">Type of Loss: <SPAN class="ft1"><%= @claim.review_loss_type %></SPAN></P></TD>
 </TR>
 <TR>
 	<TD class="tr9 td0"><P class="p9 ft1">Date of Loss:</P></TD>
-	<TD class="tr9 td1"><P class="p3 ft1"><%= @claim.loss_date.strftime("%m/%d/%Y") %></P></TD>
+	<TD class="tr9 td1"><P class="p3 ft1"><%= @claim.review_loss_date.gsub("-","/") %></P></TD>
 	<TD class="tr9 td2"><P class="p3 ft3">&nbsp;</P></TD>
 	<TD class="tr9 td3"><P class="p3 ft3">&nbsp;</P></TD>
 	<TD class="tr9 td4"><P class="p3 ft3">&nbsp;</P></TD>
