@@ -50,36 +50,21 @@
     <table id="items">
       <h3>Room: (living Room)</h3>
       <tr>
-        <th></th>
-        <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE", "ACV", "RCV"].each_with_index.each do |key| %>
+        <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE", "ACV", "RCV"].each do |key| %>
           <th>
             <%= key.upcase %>
           </th>
         <%- end %>
       </tr>
-      <%- (1..2).each_with_index do |row, index| %>
-        <tr id="items">
-          <td></td>
-          <td>
-            Remove and Reset Contents
-          </td>
-          <td>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-          </td>
-          <td>
-          </td>
-          <td>
-            $500.00
-          </td>
-          <td onclick="removeItem(this);" style="cursor: pointer;">
-            X
-          </td>
-        <tr>
-      <%- end %>
+      <tr>
+        <td>Remove and Reset Contents</td>
+        <td></td>
+        <td>1</td>
+        <td></td>
+        <td></td>
+        <td>$500.00</td>
+        <td onclick="removeItem(this);" style="cursor: pointer;">X</td>
+      <tr>
     </table>
 
     <style>
@@ -115,7 +100,7 @@
 
 <script type="text/javascript">
   function AddItem() {
-    row      = document.getElementById('items');
+    table    = document.getElementById('items');
     desc     = document.getElementById('item-desc').value;
     quantity = document.getElementById('item-quantity').value;
     unit     = document.getElementById('item-unit').value;
@@ -124,7 +109,6 @@
     rcv      = document.getElementById('item-rcv').value;
 
     html = `<tr>
-              <td></td>
               <td>${desc}</td>
               <td>${quantity}</td>
               <td>${unit}</td>
@@ -136,10 +120,40 @@
               </td>
             </tr>`;
 
-    row.innerHTML += html;
+    table.innerHTML += html;
   }
 
   function removeItem(el) {
     el.parentNode.remove();
   }
+
+  function tableToJSON(){
+    items = []
+    table = document.getElementById('items');
+
+    for (var i=1; i<table.rows.length; i++) {
+      if (table.rows[i].textContent != "\n    ") {
+        c = {
+          description: table.rows[i].cells[0].textContent,
+          quantity: table.rows[i].cells[1].textContent,
+          unit: table.rows[i].cells[2].textContent,
+          price: table.rows[i].cells[3].textContent,
+          acv: table.rows[i].cells[4].textContent,
+          rcv: table.rows[i].cells[5].textContent
+        };
+
+        items.push(c);
+      }
+    }
+
+    return items;
+  }
+
+  $("#save-review").click(function(){
+    json_data = tableToJSON();
+    $.post("<%= review_claim_url(claim) %>",
+      {
+        data: json_data
+      });
+  });
 </script>
