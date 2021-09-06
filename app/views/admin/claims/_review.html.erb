@@ -1,76 +1,53 @@
 <form novalidate="novalidate">
-  <center><b>Review Claim Data</b></center>
-  <br>
-  <fieldset class="inputs">
-    <ol>
-      <li class="input stringish">
-        <label class="label">Claim Number</label>
-        <input maxlength="255" type="text" value="<%= claim&.review_claim_number %>" name="claim_number">
-      </li>
-      <li class="input stringish">
-        <label class="label">Policy Number</label>
-        <input maxlength="255" type="text" value="<%= claim&.review_policy_number %>" name="policy_number">
-      </li>
-      <li class="input stringish">
-        <label class="label">Type of Loss</label>
-        <input maxlength="255" type="text" value="<%= claim&.review_loss_type %>" name="loss_type">
-      </li>
-      <li class="input">
-        <label class="label">Date of Loss</label>
-        <input type="date" style="width: fit-content;" value="<%= claim&.review_loss_date rescue '' %>" name="loss_date">
-      </li>
-    </ol>
-  </fieldset>
-
   <center><b>Review Items</b></center>
   <br>
   <fieldset class="inputs" style="padding: 20px;">
     <ol>
       <li class="input stringish">
         <label class="label">Item Name</label>
-        <input maxlength="255" type="text" value="Room: (living Room)">
+        <input id="item-name" maxlength="255" type="text" value="Room: (living Room)">
         <br>
         <br>
         <fieldset class="inputs" style="padding: 12px; margin: 0 30px;">
           <ol>
             <li class="input stringish">
               <label class="label">Description</label>
-              <input maxlength="255" type="text" value="Remove and Reset Contents">
+              <input id="item-desc" maxlength="255" type="text" value="Remove and Reset Contents">
             </li>
             <li class="input stringish">
               <label class="label">Quantity</label>
-              <input maxlength="255" type="text" value="">
+              <input id="item-quantity" maxlength="255" type="text" value="">
             </li>
             <li class="input stringish">
-              <label class="label">Unit Price</label>
-              <input maxlength="255" type="text" value="1">
+              <label class="label">Unit</label>
+              <input id="item-unit" maxlength="255" type="text" value="1">
             </li>
             <li class="input stringish">
               <label class="label">Price</label>
-              <input maxlength="255" type="text" value="">
+              <input id="item-price" maxlength="255" type="text" value="">
             </li>
             <li class="input stringish">
               <label class="label">ACV</label>
-              <input maxlength="255" type="text" value="">
+              <input id="item-acv" maxlength="255" type="text" value="">
             </li>
             <li class="input stringish">
               <label class="label">RCV</label>
-              <input maxlength="255" type="text" value="$500.00">
+              <input id="item-rcv" maxlength="255" type="text" value="$500.00">
             </li>
           </ol>
         </fieldset>
       </li>
     </ol>
     <div class="buttons" style="float: right;">
-      <input type="button" name="add" value="Add New Item" data-disable-with="Add New Item" onclick="console.log('ok');">
+      <input type="button" name="add" value="Add New Item" data-disable-with="Add New Item" onclick="AddItem();">
     </div>
   </fieldset>
 
-  <br><br><br>
+  <br>
   <%- begin %>
     <%- column = @claim.meta["tables"].first.keys %>
 
-    <table>
+    <table id="items">
       <h3>Room: (living Room)</h3>
       <tr>
         <th></th>
@@ -81,8 +58,8 @@
         <%- end %>
       </tr>
       <%- (1..2).each_with_index do |row, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
+        <tr id="items">
+          <td></td>
           <td>
             Remove and Reset Contents
           </td>
@@ -98,7 +75,7 @@
           <td>
             $500.00
           </td>
-          <td>
+          <td onclick="removeItem(this);" style="cursor: pointer;">
             X
           </td>
         <tr>
@@ -127,9 +104,9 @@
 
 </form>
 
-<br><br><br>
+<br>
 <hr>
-<br><br><br>
+<br>
 <div class="buttons" style="float: right;">
   <a href="<%= export_claim_url(format: :pdf) %>" target="_blank" id="save-review">
     <input type="submit" name="commit" value="Save & Export" data-disable-with="Save & Export">
@@ -137,20 +114,32 @@
 </div>
 
 <script type="text/javascript">
+  function AddItem() {
+    row      = document.getElementById('items');
+    desc     = document.getElementById('item-desc').value;
+    quantity = document.getElementById('item-quantity').value;
+    unit     = document.getElementById('item-unit').value;
+    price    = document.getElementById('item-price').value;
+    acv      = document.getElementById('item-acv').value;
+    rcv      = document.getElementById('item-rcv').value;
 
-  $("#save-review").click(function(){
-  $.post("<%= review_claim_url(claim) %>",
-    {
-      data: {
-        claim_number: $("input[name=claim_number").val(),
-        policy_number: $("input[name=policy_number").val(),
-        loss_type: $("input[name=loss_type").val(),
-        loss_date: $("input[name=loss_date").val()
-      }
-    },
-    function(data, status){
-      console.log("Data: " + data + "\nStatus: " + status);
-    });
-  });
+    html = `<tr>
+              <td></td>
+              <td>${desc}</td>
+              <td>${quantity}</td>
+              <td>${unit}</td>
+              <td>${price}</td>
+              <td>${acv}</td>
+              <td>${rcv}</td>
+              <td onclick="removeItem(this);" style="cursor: pointer;">
+                X
+              </td>
+            </tr>`;
 
+    row.innerHTML += html;
+  }
+
+  function removeItem(el) {
+    el.parentNode.remove();
+  }
 </script>
