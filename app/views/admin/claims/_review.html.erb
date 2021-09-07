@@ -132,11 +132,22 @@
 
   function findOrCreateItems(text){
     items = document.getElementsByClassName('items');
+    newItem = true;
 
     for (var i=0; i<items.length; i++) {
-      if (items[i].firstElementChild.textContent == text) {
+      if (items[i].firstElementChild.textContent.trim() == text.trim()) {
+        newItem = false;
         return items[i];
       }
+    }
+
+    if (newItem == true) {
+      html = `<div class="items">
+                <h3>${text}</h3>
+              </div>`;
+
+      container = document.getElementById('items-container');
+      container.innerHTML += html;
     }
   }
 
