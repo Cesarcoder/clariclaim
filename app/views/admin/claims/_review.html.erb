@@ -26,14 +26,6 @@
               <label class="label">Price</label>
               <input id="item-price" maxlength="9" type="text" value="">
             </li>
-            <li class="input stringish">
-              <label class="label">ACV</label>
-              <input id="item-acv" maxlength="9" type="text" value="">
-            </li>
-            <li class="input stringish">
-              <label class="label">RCV</label>
-              <input id="item-rcv" maxlength="9" type="text" value="$500.00">
-            </li>
           </ol>
         </fieldset>
       </li>
@@ -52,7 +44,7 @@
         <h3>Room: (living Room)</h3>
         <table>
           <tr>
-            <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE", "ACV", "RCV"].each do |key| %>
+            <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE"].each do |key| %>
               <th>
                 <%= key.upcase %>
               </th>
@@ -62,8 +54,6 @@
             <td>Remove and Reset Contents</td>
             <td></td>
             <td>1</td>
-            <td></td>
-            <td></td>
             <td>$500.00</td>
             <td onclick="removeItem(this);" style="cursor: pointer;color: red;">&#9003;</td>
           <tr>
@@ -115,16 +105,14 @@
     quantity = document.getElementById('item-quantity').value;
     unit     = document.getElementById('item-unit').value;
     price    = document.getElementById('item-price').value;
-    acv      = document.getElementById('item-acv').value;
-    rcv      = document.getElementById('item-rcv').value;
+    // acv      = document.getElementById('item-acv').value;
+    // rcv      = document.getElementById('item-rcv').value;
 
     html = `<tr>
               <td>${desc}</td>
               <td>${quantity}</td>
               <td>${unit}</td>
               <td>${price}</td>
-              <td>${acv}</td>
-              <td>${rcv}</td>
               <td onclick="removeItem(this);" style="cursor: pointer;color: red;">
                 &#9003;
               </td>
@@ -155,8 +143,6 @@
                       <th>QUANTITY</th>
                       <th>UNIT</th>
                       <th>PRICE</th>
-                      <th>ACV</th>
-                      <th>RCV</th>
                     </tr>
                   </tbody>
                 </table>
@@ -184,9 +170,7 @@
           description: table.rows[i].cells[0].textContent,
           quantity: table.rows[i].cells[1].textContent,
           unit: table.rows[i].cells[2].textContent,
-          price: table.rows[i].cells[3].textContent,
-          acv: table.rows[i].cells[4].textContent,
-          rcv: table.rows[i].cells[5].textContent
+          price: table.rows[i].cells[3].textContent
         };
 
         items.push(c);
