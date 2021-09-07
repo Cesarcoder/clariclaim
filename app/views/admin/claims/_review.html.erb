@@ -5,7 +5,7 @@
     <ol>
       <li class="input stringish">
         <label class="label">Item Name</label>
-        <input id="item-name" maxlength="25" type="text" value="Room: (living Room)">
+        <input id="item-name" maxlength="30" type="text" value="Room: (living Room)">
         <br>
         <br>
         <fieldset class="inputs" style="padding: 12px; margin: 0 30px;">
@@ -47,26 +47,28 @@
   <%- begin %>
     <%- column = @claim.meta["tables"].first.keys %>
 
-    <div class="items">
-      <h3>Room: (living Room)</h3>
-      <table>
-        <tr>
-          <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE", "ACV", "RCV"].each do |key| %>
-            <th>
-              <%= key.upcase %>
-            </th>
-          <%- end %>
-        </tr>
-        <tr>
-          <td>Remove and Reset Contents</td>
-          <td></td>
-          <td>1</td>
-          <td></td>
-          <td></td>
-          <td>$500.00</td>
-          <td onclick="removeItem(this);" style="cursor: pointer;">X</td>
-        <tr>
-      </table>
+    <div id="items-container">
+      <div class="items">
+        <h3>Room: (living Room)</h3>
+        <table>
+          <tr>
+            <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE", "ACV", "RCV"].each do |key| %>
+              <th>
+                <%= key.upcase %>
+              </th>
+            <%- end %>
+          </tr>
+          <tr>
+            <td>Remove and Reset Contents</td>
+            <td></td>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td>$500.00</td>
+            <td onclick="removeItem(this);" style="cursor: pointer;">X</td>
+          <tr>
+        </table>
+      </div>
     </div>
 
     <style>
@@ -104,7 +106,7 @@
 
 <script type="text/javascript">
   function AddItem() {
-    table    = document.getElementsByClassName('items');
+    name     = document.getElementById('item-name').value;
     desc     = document.getElementById('item-desc').value;
     quantity = document.getElementById('item-quantity').value;
     unit     = document.getElementById('item-unit').value;
@@ -124,7 +126,18 @@
               </td>
             </tr>`;
 
-    table[0].lastElementChild.innerHTML += html;
+    item = findOrCreateItems(name);
+    item.lastElementChild.innerHTML += html;
+  }
+
+  function findOrCreateItems(text){
+    items = document.getElementsByClassName('items');
+
+    for (var i=0; i<items.length; i++) {
+      if (items[i].firstElementChild.textContent == text) {
+        return items[i];
+      }
+    }
   }
 
   function removeItem(el) {
