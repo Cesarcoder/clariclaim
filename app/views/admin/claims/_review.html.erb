@@ -47,25 +47,27 @@
   <%- begin %>
     <%- column = @claim.meta["tables"].first.keys %>
 
-    <table id="items">
+    <div class="items">
       <h3>Room: (living Room)</h3>
-      <tr>
-        <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE", "ACV", "RCV"].each do |key| %>
-          <th>
-            <%= key.upcase %>
-          </th>
-        <%- end %>
-      </tr>
-      <tr>
-        <td>Remove and Reset Contents</td>
-        <td></td>
-        <td>1</td>
-        <td></td>
-        <td></td>
-        <td>$500.00</td>
-        <td onclick="removeItem(this);" style="cursor: pointer;">X</td>
-      <tr>
-    </table>
+      <table>
+        <tr>
+          <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE", "ACV", "RCV"].each do |key| %>
+            <th>
+              <%= key.upcase %>
+            </th>
+          <%- end %>
+        </tr>
+        <tr>
+          <td>Remove and Reset Contents</td>
+          <td></td>
+          <td>1</td>
+          <td></td>
+          <td></td>
+          <td>$500.00</td>
+          <td onclick="removeItem(this);" style="cursor: pointer;">X</td>
+        <tr>
+      </table>
+    </div>
 
     <style>
       table {
@@ -102,7 +104,7 @@
 
 <script type="text/javascript">
   function AddItem() {
-    table    = document.getElementById('items');
+    table    = document.getElementsByClassName('items');
     desc     = document.getElementById('item-desc').value;
     quantity = document.getElementById('item-quantity').value;
     unit     = document.getElementById('item-unit').value;
@@ -122,7 +124,7 @@
               </td>
             </tr>`;
 
-    table.innerHTML += html;
+    table[0].lastElementChild.innerHTML += html;
   }
 
   function removeItem(el) {
@@ -130,11 +132,12 @@
   }
 
   function tableToJSON(){
-    items = []
-    table = document.getElementById('items');
+    items    = []
+    items_el = document.getElementsByClassName('items');
+    table    = items_el[0].lastElementChild;
 
     for (var i=1; i<table.rows.length; i++) {
-      if (table.rows[i].textContent != "\n    ") {
+      if (table.rows[i].textContent.trim() != "") {
         c = {
           description: table.rows[i].cells[0].textContent,
           quantity: table.rows[i].cells[1].textContent,

@@ -204,12 +204,12 @@ body {margin-top: 0px;margin-left: 0px;}
 <%- @claim.review_data.each do |item| %>
 	<TR>
 		<TD class="tr11 td8"><P class="p20 ft1"><%= item[0].to_i + 1 %>.</P></TD>
-		<TD class="tr11 td9"><P class="p18 ft1"><%= item[1]['description'] %></P></TD>
-		<TD class="tr11 td10"><P class="p3 ft3"><%= item[1]['quantity'] %></P></TD>
-		<TD class="tr11 td11"><P class="p19 ft1"><%= item[1]['unit'] %></P></TD>
-		<TD class="tr11 td12"><P class="p3 ft3"><%= item[1]['price'] %></P></TD>
-		<TD class="tr11 td13"><P class="p21 ft1"><%= item[1]['acv'] %></P></TD>
-		<TD class="tr11 td13"><P class="p21 ft1"><%= item[1]['rcv'] %></P></TD>
+		<TD class="tr10 td9"><P class="p18 ft8"><%= item[1]['description'] %></P></TD>
+		<TD class="tr10 td10"><P class="p3 ft8"><%= item[1]['quantity'] %></P></TD>
+		<TD class="tr10 td11"><P class="p19 ft8"><%= item[1]['unit'] %></P></TD>
+		<TD class="tr10 td12"><P class="p3 ft8"><%= item[1]['price'] %></P></TD>
+		<TD class="tr10 td13"><P class="p3 ft8"><%= item[1]['acv'] %></P></TD>
+		<TD class="tr10 td13"><P class="p3 ft8"><%= item[1]['rcv'] %></P></TD>
 	</TR>
 <%- end %>
 </TABLE>
