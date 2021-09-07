@@ -49,7 +49,7 @@
 
     <div id="items-container">
       <div class="items">
-        <h3>Room: (living Room)</h3>
+        <h3>Room: (living Room) <span onclick="removeItem(this.parentNode);" style="cursor: pointer;color: red;">&#9003;</span></h3>
         <table>
           <tr>
             <%- ["DESCRIPTION", "QUANTITY", "UNIT", "PRICE", "ACV", "RCV"].each do |key| %>
@@ -65,7 +65,7 @@
             <td></td>
             <td></td>
             <td>$500.00</td>
-            <td onclick="removeItem(this);" style="cursor: pointer;">X</td>
+            <td onclick="removeItem(this);" style="cursor: pointer;color: red;">&#9003;</td>
           <tr>
         </table>
       </div>
@@ -82,6 +82,10 @@
         padding: 0;
         padding-top: 5px;
         padding-bottom: 5px;
+      }
+
+      .items {
+        padding-bottom: 8px;
       }
 
     </style>
@@ -121,8 +125,8 @@
               <td>${price}</td>
               <td>${acv}</td>
               <td>${rcv}</td>
-              <td onclick="removeItem(this);" style="cursor: pointer;">
-                X
+              <td onclick="removeItem(this);" style="cursor: pointer;color: red;">
+                &#9003;
               </td>
             </tr>`;
 
@@ -144,11 +148,25 @@
     if (newItem == true) {
       html = `<div class="items">
                 <h3>${text}</h3>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>DESCRIPTION</th>
+                      <th>QUANTITY</th>
+                      <th>UNIT</th>
+                      <th>PRICE</th>
+                      <th>ACV</th>
+                      <th>RCV</th>
+                    </tr>
+                  </tbody>
+                </table>
               </div>`;
 
       container = document.getElementById('items-container');
       container.innerHTML += html;
     }
+
+    AddItem();
   }
 
   function removeItem(el) {
