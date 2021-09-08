@@ -140,6 +140,12 @@ ActiveAdmin.register Claim do
             }
           end
         end
+
+        panel "Payment" do
+          attributes_table_for claim do
+            render partial: 'payment'
+          end
+        end
       end
     end
   end
