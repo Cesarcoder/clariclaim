@@ -1,0 +1,25 @@
+<!-- app/views/charges/new.html.erb -->
+
+<div style="background-color: white; margin: auto 0; text-align: center; padding: 75px; margin: 20%;border-radius: 20px;">
+
+  <%= form_tag charges_path do %>
+    <article>
+      <h2>Blbalabla bla here</h2>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span>Amount: $5</span>
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.application.credentials.stripetest[:pk] %>"
+            data-description="ClariClaim Services"
+            data-amount="500"
+            data-locale="auto"></script>
+  <% end %>
+
+</div>
