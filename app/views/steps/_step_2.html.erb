@@ -1,47 +1,8 @@
 <div class="step">
 
-    <h3 class="main_question"><strong>2/3</strong>Choose your packages</h3>
+    <h3 class="main_question"><strong>2/3</strong>Please fill with your details</h3>
 
-    <input type="hidden" id="package" name="claim[package_id]" value="">
-
-    <div class="form-group radio_questions">
-        <label>1. 1-$1,000
-            <span style="float: right;">$39.99</span>
-            <input id="package_1" name="claim[package_id]" type="radio" value="1" class="icheck required">
-        </label>
-    </div>
-    <div class="form-group radio_questions">
-        <label>2. $1,000-$2,500
-            <span style="float: right;">$49.99</span>
-            <input id="package_2" name="claim[package_id]" type="radio" value="2" class="icheck required">
-        </label>
-    </div>
-    <div class="form-group radio_questions">
-        <label>3. $2,500-$5,000
-            <span style="float: right;">$59.99</span>
-            <input id="package_3" name="claim[package_id]" type="radio" value="3" class="icheck required">
-        </label>
-    </div>
-    <div class="form-group radio_questions">
-        <label>4. $5,000-$15,000
-            <span style="float: right;">$69.99</span>
-            <input id="package_4" name="claim[package_id]" type="radio" value="4" class="icheck required">
-        </label>
-    </div>
-    <div class="form-group radio_questions">
-        <label>5. $15,000-$30,000
-            <span style="float: right;">$79.99</span>
-            <input id="package_5" name="claim[package_id]" type="radio" value="5" class="icheck required">
-        </label>
-    </div>
-    <div class="form-group radio_questions">
-        <label>6. $30,000-$50,000
-          <span style="float: right;">$89.99</span>
-            <input id="package_6" name="claim[package_id]" type="radio" value="6" class="icheck required">
-        </label>
-    </div>
-
-    <label>Please fill with your details</label>
+    <%# render "steps/package" %>
 
     <div class="row">
         <div class="col-sm-6">
@@ -83,6 +44,12 @@
     </div><!-- /row -->
 
     <%# render "steps/addons" %>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.application.credentials.stripetest[:pk] %>"
+            data-description="ClariClaim Services"
+            data-amount="5999"
+            data-locale="auto"></script>
 
 </div><!-- /step 2-->
 
