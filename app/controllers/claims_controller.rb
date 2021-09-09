@@ -11,6 +11,20 @@ class ClaimsController < ApplicationController
 
         ExtractWorker.perform_async(@claim.id)
 
+        @amount = 5999
+
+        customer = Stripe::Customer.create(
+          email: params[:stripeEmail],
+          source: params[:stripeToken]
+        )
+
+        charge = Stripe::Charge.create(
+          customer: customer.id,
+          amount: @amount,
+          description: 'Clariclaim customer',
+          currency: 'usd'
+        )
+
         format.html { redirect_to success_claims_path, notice: "Claim was successfully created." }
         format.json { render :show, status: :created, location: @claim }
       else
