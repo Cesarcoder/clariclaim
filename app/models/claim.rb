@@ -125,6 +125,10 @@ class Claim < ApplicationRecord
     review_data['loss_date'] rescue loss_date
   end
 
+  def insured
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def loss_date_cannot_be_in_the_future
