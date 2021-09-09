@@ -11,6 +11,49 @@
               </div>
             </div>
 
+            <label>Please fill with your details</label>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="text" name="claim[first_name]" class="required form-control" placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="claim[last_name]" class="required form-control" placeholder="Last name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="claim[phone]" class="required form-control" placeholder="Phone">
+                    </div>
+                    <div class="form-group">
+                      <input type="email" name="claim[email]" class="required form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <div class="styled-select">
+                            <select class="required" name="claim[contact_preference]">
+                                <option value="" selected>Select your contact preference</option>
+                                <option value="phone">Phone</option>
+                                <option value="email">Email</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><!-- /col-sm-6 -->
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="claim[address]" class="required form-control" placeholder="Address">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="claim[city]" class="required form-control" placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="claim[state]" class="required form-control" placeholder="State">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="claim[zipcode]" class="required form-control" placeholder="Zipcode">
+                    </div>
+                </div><!-- /col-sm-6 -->
+            </div><!-- /row -->
+
             <div class="form-group select">
                 <label>What type of Loss?</label>
                 <div class="styled-select">

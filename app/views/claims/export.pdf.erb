@@ -201,7 +201,7 @@ body {margin-top: 0px;margin-left: 0px;}
 		<!-- <TD class="tr10 td13"><P class="p3 ft8">ACV</P></TD>
 		<TD class="tr10 td13"><P class="p3 ft8">RCV</P></TD> -->
 	</TR>
-<%- @claim&.review_data.each do |item| %>
+<%- @claim&.review_data&.each do |item| %>
 	<TR>
 		<TD class="tr11 td8"><P class="p20 ft1"><%= item[0].to_i + 1 %>.</P></TD>
 		<TD class="tr10 td9"><P class="p18 ft8"><%= item[1]['description'] %></P></TD>
