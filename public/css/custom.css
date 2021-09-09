@@ -43,3 +43,8 @@ only screen and (min-device-pixel-ratio: 2) {
     z-index: 2;
   }
 }
+
+#additional_links ul, #additional_links ul li a{
+  color: #777;
+  line-height: 1;
+}
