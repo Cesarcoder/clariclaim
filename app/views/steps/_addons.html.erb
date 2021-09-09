@@ -1,0 +1,41 @@
+<h3 class="main_question"><br>Select your additional addons</h3>
+
+<div class="form-group radio_questions" id="supplemental_claim">
+    <label>Supplemental Claim
+        <span style="float: right;">$199.99</span>
+        <input id="addons_101" name="claim[addons_101]" type="radio" value="101" class="icheck" onclick="toogleAddons(this, 101);">
+        <div id="supplemental_room">
+          <br>
+          <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="text" name="claim[room_name][]" class="form-control" placeholder="Room Name" required>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <input type="text" name="claim[room_dimension][]" class="form-control" placeholder="Room Dimension (L x W x H)" required>
+                </div>
+            </div>
+            <div class="col-sm-1">
+              <div class="form-group text-center">
+                <a href="#0" onclick="addRoom();"><i class="icon-plus-circled icon-room"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </label>
+</div>
+
+<div class="form-group radio_questions">
+    <label>20 Min Consultation
+        <span style="float: right;">$129.99</span>
+        <input id="addons_102" name="claim[addons_102]" type="radio" value="102" class="icheck" onclick="toogleAddons(this, 102);">
+    </label>
+</div>
+<div class="form-group radio_questions">
+    <label>Will Refer a Qualified Public Adjuster In your Area
+        <span style="float: right;">FREE</span>
+        <input id="addons_103" name="claim[addons_103]" type="radio" value="103" class="icheck" onclick="toogleAddons(this, 103);">
+    </label>
+</div>

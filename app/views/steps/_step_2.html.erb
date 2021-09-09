@@ -41,47 +41,49 @@
         </label>
     </div>
 
-    <h3 class="main_question"><br>Select your additional addons</h3>
+    <label>Please fill with your details</label>
 
-    <div class="form-group radio_questions" id="supplemental_claim">
-        <label>Supplemental Claim
-            <span style="float: right;">$199.99</span>
-            <input id="addons_101" name="claim[addons_101]" type="radio" value="101" class="icheck" onclick="toogleAddons(this, 101);">
-            <div id="supplemental_room">
-              <br>
-              <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <input type="text" name="claim[room_name][]" class="form-control" placeholder="Room Name" required>
-                    </div>
-                </div>
-                <div class="col-sm-5">
-                    <div class="form-group">
-                        <input type="text" name="claim[room_dimension][]" class="form-control" placeholder="Room Dimension (L x W x H)" required>
-                    </div>
-                </div>
-                <div class="col-sm-1">
-                  <div class="form-group text-center">
-                    <a href="#0" onclick="addRoom();"><i class="icon-plus-circled icon-room"></i></a>
-                  </div>
-                </div>
-              </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input type="text" name="claim[first_name]" class="required form-control" placeholder="First name">
             </div>
-        </label>
-    </div>
+            <div class="form-group">
+                <input type="text" name="claim[last_name]" class="required form-control" placeholder="Last name">
+            </div>
+            <div class="form-group">
+                <input type="text" name="claim[phone]" class="required form-control" placeholder="Phone">
+            </div>
 
-    <div class="form-group radio_questions">
-        <label>20 Min Consultation
-            <span style="float: right;">$129.99</span>
-            <input id="addons_102" name="claim[addons_102]" type="radio" value="102" class="icheck" onclick="toogleAddons(this, 102);">
-        </label>
-    </div>
-    <div class="form-group radio_questions">
-        <label>Will Refer a Qualified Public Adjuster In your Area
-            <span style="float: right;">FREE</span>
-            <input id="addons_103" name="claim[addons_103]" type="radio" value="103" class="icheck" onclick="toogleAddons(this, 103);">
-        </label>
-    </div>
+            <div class="form-group">
+                <div class="styled-select">
+                    <select class="required" name="claim[contact_preference]">
+                        <option value="" selected>Select your contact preference</option>
+                        <option value="phone">Phone</option>
+                        <option value="email">Email</option>
+                    </select>
+                </div>
+            </div>
+        </div><!-- /col-sm-6 -->
+
+        <div class="col-sm-6">
+            <div class="form-group">
+              <input type="text" name="claim[address]" class="required form-control" placeholder="Address">
+            </div>
+            <div class="form-group">
+                <input type="text" name="claim[city]" class="required form-control" placeholder="City">
+            </div>
+            <div class="form-group">
+                <input type="text" name="claim[state]" class="required form-control" placeholder="State">
+            </div>
+            <div class="form-group">
+                <input type="text" name="claim[zipcode]" class="required form-control" placeholder="Zipcode">
+            </div>
+        </div><!-- /col-sm-6 -->
+    </div><!-- /row -->
+
+    <%# render "steps/addons" %>
+
 </div><!-- /step 2-->
 
 <script src="js/jquery-3.5.1.min.js"></script>
