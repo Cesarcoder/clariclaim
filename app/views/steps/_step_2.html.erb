@@ -46,12 +46,7 @@
     </div><!-- /row -->
 
     <%# render "steps/addons" %>
-
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.application.credentials.stripetest[:pk] %>"
-            data-description="ClariClaim Services"
-            data-amount="5999"
-            data-locale="auto"></script>
+    <%# render "steps/pay" %>
 
 </div><!-- /step 2-->
 

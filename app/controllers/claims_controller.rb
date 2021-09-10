@@ -11,21 +11,21 @@ class ClaimsController < ApplicationController
 
         ExtractWorker.perform_async(@claim.id)
 
-        @amount = 5999
+        session = Stripe::Checkout::Session.create({
+          line_items: [{
+            price: 'price_1JXxDwC7nkluOhqwdPInLrH6',
+            quantity: 1,
+          }],
+          payment_method_types: [
+            'card',
+          ],
+          mode: 'payment',
+          success_url: domain + '/claims/success',
+          cancel_url: domain + '/claims/cancel',
+        })
 
-        customer = Stripe::Customer.create(
-          email: params[:stripeEmail],
-          source: params[:stripeToken]
-        )
-
-        charge = Stripe::Charge.create(
-          customer: customer.id,
-          amount: @amount,
-          description: 'Clariclaim customer',
-          currency: 'usd'
-        )
-
-        format.html { redirect_to success_claims_path, notice: "Claim was successfully created." }
+        format.html { redirect_to session.url, status: 303 }
+        # format.html { redirect_to success_claims_path, notice: "Claim was successfully created." }
         format.json { render :show, status: :created, location: @claim }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -137,5 +137,9 @@ class ClaimsController < ApplicationController
 
     def loss_location_meta_params
       JSON.parse(params[:claim][:loss_location_meta])
+    end
+
+    def domain
+      Rails.env.production? ? 'http://34.134.75.48/' : 'http://localhost:3000/'
     end
 end
