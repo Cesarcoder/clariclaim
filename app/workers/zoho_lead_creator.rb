@@ -9,7 +9,8 @@ class ZohoLeadCreator
         Loss_Type: params[:loss_type],
         First_Name: params[:first_name],
         Last_Name: params[:last_name], # this is required field in zoho lead
-        Company: params[:state] # this is required field in zoho lead
+        Company: params[:state], # this is required field in zoho lead
+        Phone: params[:phone]
       }]
     }
     ZohoService.new.create_lead(lead_params, oauth_token)

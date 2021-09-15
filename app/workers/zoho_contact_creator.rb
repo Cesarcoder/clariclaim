@@ -9,7 +9,9 @@ class ZohoContactCreator
         Loss_Date: params[:loss_date],
         Property_Type: params[:property_type],
         Origin_Of_Loss: params[:loss_location_start],
-        Documents: params[:insurance_estimate]
+        Documents: params[:insurance_estimate],
+        Email: params[:email],
+        Phone: params[:phone]
       }]
     }
     ZohoService.new.create_contact(contact_params, oauth_token)

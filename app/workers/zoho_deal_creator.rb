@@ -18,7 +18,10 @@ class ZohoDealCreator
         Pipeline: 'Standard (Standard)', # required field
         Stage: 'Prospect', # required field
         Contact: contact['data'].first['id'], # required field
-
+        City: params[:city],
+        State: params[:state],
+        Address: params[:address],
+        Zipcode: params[:zipcode]
       }]
     }
     zoho_service.create_deal(deal_params, oauth_token)
