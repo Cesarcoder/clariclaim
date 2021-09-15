@@ -4,6 +4,7 @@ class ClaimsController < ApplicationController
 
     respond_to do |format|
       if @claim.save
+        ZohoClaimCreator.new.perform(claim_params)
         @claim.update_columns(
           addons_data: addons_params,
           loss_location_meta: loss_location_meta_params
