@@ -237,6 +237,12 @@ a.close_in:hover {
 
 /*-------- 1.3 Structure --------*/
 /* Header */
+header {
+    overflow: auto;
+    background-color: white;
+    width: 100%;
+    height: 70px;
+}
 #header_in {
     height: 70px;
     border-bottom: 1px solid #e8ebed;
@@ -620,7 +626,7 @@ footer ul li:first-child {
     background: #fff4e3 url(../img/about_bg.svg) no-repeat center bottom;
 }
 .subheader#quote {
-    background: #fff4e3 url(../img/quote_bg.svg) no-repeat center bottom;
+    /*background: #fff4e3 url(../img/quote_bg.svg) no-repeat center bottom;*/
 }
 .subheader#services {
     background: #fff4e3 url(../img/services_bg.svg) no-repeat center bottom;
@@ -1141,6 +1147,15 @@ textarea.form-control:focus {
 /*============================================================================================*/
 /* 3.  COMMON */
 /*============================================================================================*/
+
+.bg-black {
+  background-color: black;
+}
+
+.t-100 {
+  top: 100px;
+}
+
 /*-------- 3.1 Accordion --------*/
 .card {
   border: 0;
