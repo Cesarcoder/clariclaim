@@ -1,0 +1,53 @@
+<div class="bg-white">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= form_tag(claims_path, { method: :post, multipart: true }) do %>
+        <div class="step" id="step3">
+          <label>Stage 3</label>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" name="claim[phone]" class="required form-control" placeholder="Phone">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <div class="styled-select">
+                  <select class="required" name="claim[contact_preference]">
+                      <option value="" selected>Select your contact preference</option>
+                      <option value="phone">Phone</option>
+                      <option value="email">Email</option>
+                  </select>
+                </div>
+              </div>
+            </div><!-- /col-sm-6 -->
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" name="claim[address]" class="required form-control" placeholder="Address">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" name="claim[city]" class="required form-control" placeholder="City">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" name="claim[state]" class="required form-control" placeholder="State">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" name="claim[zipcode]" class="required form-control" placeholder="Zipcode">
+              </div>
+            </div><!-- /col-sm-6 -->
+          </div><!-- /row -->
+          <button type="submit" name="" class="submit">submit</button>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="step" id="step2" style="display: none;">
+  <div class="row">
+
+    <div class="col-lg-10">
+      <div class="form-group select">
+        <label>Insurance Estimate<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
+        <div class="fileupload">
+          <input id="insurance_estimate" type="file" name="claim[insurance_estimate]" accept="application/pdf" onchange="parsePdf()" required>
+        </div>
+      </div>
+
+      <div class="form-group select">
+        <label>Date of Loss</label>
+        <div class="form-group">
+          <input type="date" id="loss_date" name="claim[loss_date]" max="<%= Date.today %>"  class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-group select">
+        <div class="styled-select">
+          <select class="required" name="claim[property_type]">
+            <option value="" selected>Property Type</option>
+            <option value="Single family">Single family</option>
+            <option value="Multifamily">Multifamily</option>
+            <option value="Condo">Condo</option>
+            <option value="Commercial">Commercial</option>
+            <option value="Mix-use">Mix-use</option>
+            <option value="Other structure">Other structure</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group select" id="other_unit_affected_form">
+        <div class="styled-select">
+          <select name="claim[other_unit_affected]" id="other_unit_affected">
+            <option value="" selected>Were other units effected?</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+      </div><!-- /select-->
+
+      <div class="form-group select">
+        <div class="form-group">
+          <input type="text" id="loss_location_start" name="claim[loss_location_start]" class="form-control" required placeholder="Where did the loss start?">
+        </div>
+      </div>
+
+      <div class="form-group select">
+        <label>Declarations Page<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
+        <div class="fileupload">
+          <input type="file" name="claim[declarations_page]" accept="application/pdf">
+        </div>
+      </div>
+
+      <div class="form-group select">
+        <label>Was there damage outside of what your insurance company reported?</label>
+        <div class="styled-select">
+          <select class="required" id="damage_outside_insurance" name="claim[damage_outside_insurance]" onchange="showSuplemenClaim()" placeholder='Was there damage outside of what your insurance company reported?'>
+              <option value="" selected>Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+          </select>
+        </div>
+      </div><!-- /select-->
+    </div>
+  </div><!-- /row-->
+
+  <button type="button" name="backward" class="backward step2" onclick="moveToStep1()">Backward</button>
+  <button type="submit" name="process" class="submit">Submit</button>
+</div>
+
+<script type="text/javascript">
+  function moveToStep1(){
+    $('#step1').show();
+    $('#step2').hide();
+    $('#step3').hide();
+  }
+  function moveToStep3(){
+    $('#step1').hide();
+    $('#step2').hide();
+    $('#step3').show();
+  }
+</script>

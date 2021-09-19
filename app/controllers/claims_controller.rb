@@ -1,6 +1,16 @@
 class ClaimsController < ApplicationController
   def create
+    tparams = claim_params
     @claim = Claim.new(claim_params)
+    full_name = params[:claim][:full_name]
+    names = full_name.split(' ')
+    if names.length > 1
+      tparams[:first_name] = names[0]
+      tparams[:last_name]  = full_name.from(names[0].length + 1)
+    else
+      tparams[:first_name] = ''
+      tparams[:last_name]  = names[0]
+    end
 
     respond_to do |format|
       if @claim.save
@@ -21,7 +31,7 @@ class ClaimsController < ApplicationController
             'card',
           ],
           mode: 'payment',
-          success_url: domain + '/claims/success',
+          success_url: domain + "additional_info?claim_id=#{@claim.id}",
           cancel_url: domain + '/claims/cancel',
         })
 

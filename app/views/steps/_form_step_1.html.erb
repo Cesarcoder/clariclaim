@@ -1,0 +1,74 @@
+<div class="step" id="step1">
+  <label>Get started in minutes, fill out the form</label>
+  <div class="form-group">
+    <input type="text" name="claim[full_name]" class="required form-control" placeholder="Full Name">
+  </div>
+  <div class="form-group">
+    <input type="email" name="claim[email]" class="required form-control" placeholder="Email">
+  </div>
+  <div class="form-group select">
+    <div class="styled-select">
+      <select class="required" id="loss_type" name="claim[loss_type]">
+        <option value="" selected>Loss Type</option>
+        <option value="Fire">Fire</option>
+        <option value="Wind">Wind</option>
+        <option value="Water">Water</option>
+        <option value="Hail">Hail</option>
+        <option value="Frozen Pipe">Frozen Pipe</option>
+        <option value="Collapse">Collapse</option>
+        <option value="Car into a dwelling">Car into a dwelling</option>
+        <option value="Other">Other</option>
+        <option value="Named Storm">Named Storm</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" id="loss_location" name="claim[loss_location]" class="required form-control" placeholder="Enter your loss location here">
+    <input type="hidden" id="loss_location_point" name="claim[loss_location_point]" value="">
+    <input type="hidden" id="loss_location_meta" name="claim[loss_location_meta]" value="{}">
+  </div>
+  <button type="button" name="forward" class="forward step1" onclick="moveToStep2()">Forward</button>
+</div>
+
+<!-- SCRIPTS -->
+<!-- Jquery-->
+<script src="js/jquery-3.5.1.min.js"></script>
+<!-- Common script -->
+<script src="js/common_scripts_min.js"></script>
+<!-- Theme script -->
+<script src="js/file-validator.js"></script>
+<script src="js/functions_with_upload.js"></script>
+
+<!-- Google map -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTnrAc18j5zHsTD5z-wA1SNqJ0ExJfRH8&callback=initAutocomplete&libraries=places&v=weekly"
+  async
+></script>
+
+<script src="js/mapmarker.jquery.js"></script>
+<script src="js/mapmarker_func.jquery.js"></script>
+
+
+<script type="text/javascript">
+  function moveToStep2() {
+    $('#step1').hide();
+    $('#step2').show();
+    $('#step3').hide();
+  }
+  function initAutocomplete() {
+    lossLocationField = document.querySelector("#loss_location");
+    autocomplete = new google.maps.places.Autocomplete(lossLocationField);
+    lossLocationField.focus();
+
+    autocomplete.addListener("place_changed", fillInAddress);
+  }
+  function fillInAddress() {
+    const place = autocomplete.getPlace();
+    const lat   = place.geometry.location.lat();
+    const lng   = place.geometry.location.lng();
+    $('#loss_location_point').val(lat + "," + lng);
+    $('#loss_location_meta').val(JSON.stringify(place));
+  }
+  initAutocomplete();
+</script>

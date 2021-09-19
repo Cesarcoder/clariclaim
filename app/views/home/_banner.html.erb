@@ -1,0 +1,39 @@
+<div class="bg-white">
+  <div class="row m-0">
+    <div class="col-md-6">
+      <div class="position-relative">
+        <video controls class="video_modal w-100">
+          <source src="media/clariclaim-v1.mp4" type="video/mp4">
+        </video>
+        <div class="position-absolute w-100 t-100">
+          <div class="row d-none">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <h2>$443 Billion</h2>
+              <h3>Insurance Claims Yearly</h3>
+              <h5>Learn how we can maximize your claim with our simple 3 step process. Upload your estimate today and be at ease knowing we?ve got your coverageLearn how we can maximize your claim with our simple 3 step process. Upload your estimate today and be at ease knowing we?ve got your coverage</h5>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row mt-3">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 col-12">
+          <div>
+            <%= form_tag(claims_path, { method: :post, multipart: true }) do %>
+              <input id="website" name="website" type="text" value=""><!-- Leave for security protection, read docs for details -->
+              <div id="middle-wizard" class="bg-white p-3">
+                <%= render 'steps/form_step_1' %>
+                <%= render 'steps/form_step_2' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -237,12 +237,6 @@ a.close_in:hover {
 
 /*-------- 1.3 Structure --------*/
 /* Header */
-header {
-    overflow: auto;
-    background-color: white;
-    width: 100%;
-    height: 70px;
-}
 #header_in {
     height: 70px;
     border-bottom: 1px solid #e8ebed;
@@ -342,24 +336,6 @@ header {
 }
 
 /* Aside panel */
-#main_container {
-	visibility: hidden;
-	opacity: 0;
-	-webkit-transform: translateX(100%);
-    -moz-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    -o-transform: translateX(100%);
-    transform: translateX(100%);
-    width: 90%;
-    height: 100%;
-    box-sizing: border-box;
-    position: fixed;
-	top:0;
-	right:0;
-    background-color: #f8f8f8;
-    z-index: 999;
-	overflow:visible;
-}
 #main_container.show_container {
 	-webkit-transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     -moz-transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
@@ -441,12 +417,6 @@ footer ul li {
 }
 footer ul li a {
     color: #555;
-}
-footer ul li:after {
-    content: "|";
-    font-weight: 300;
-    position: relative;
-    left: 10px;
 }
 footer ul li:first-child:after,
 footer ul li:last-child:after {
@@ -946,9 +916,9 @@ span.error:after {
 .form-control::-webkit-input-placeholder {
     color: #999;
 }
-input.form-control,
-select.form-control,
-textarea.form-control {
+#middle-wizard input.form-control,
+#middle-wizard select.form-control,
+#middle-wizard textarea.form-control {
     background: none;
     background-color: #fff;
     border: 2px solid #e8ebed;
@@ -965,9 +935,9 @@ textarea.form-control {
     margin-bottom: 25px;
     padding: 6px 12px;
 }
-input.form-control:focus,
-select.form-control:focus,
-textarea.form-control:focus {
+#middle-wizard input.form-control:focus,
+#middle-wizard select.form-control:focus,
+#middle-wizard textarea.form-control:focus {
     border-color: #ffcc33;
     outline: 0;
     -webkit-box-shadow: none;

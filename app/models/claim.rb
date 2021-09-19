@@ -14,6 +14,8 @@ class Claim < ApplicationRecord
 
   delegate :name, to: :package, prefix: true, allow_nil: true
 
+  attribute :full_name
+
   def loss_type_formatted
     if loss_type_desc.present?
       "#{loss_type} - #{loss_type_desc}"
@@ -140,5 +142,16 @@ class Claim < ApplicationRecord
   def set_default_json_data
     addons_data = {} if addons_data.nil?
     review_data = {} if review_data.nil?
+  end
+
+  def full_name= value
+    names = value.split(' ')
+    if names.length > 1
+      self.first_name = names[0]
+      self.last_name  = value.from(names[0].length + 1)
+    else
+      self.first_name = ''
+      self.last_name  = names[0]
+    end
   end
 end

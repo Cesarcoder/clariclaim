@@ -1,0 +1,50 @@
+<div class="step" id="step3" style="display: none;">
+  <label>Stage 3</label>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <input type="text" name="claim[phone]" class="required form-control" placeholder="Phone">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <div class="styled-select">
+          <select class="required" name="claim[contact_preference]">
+              <option value="" selected>Select your contact preference</option>
+              <option value="phone">Phone</option>
+              <option value="email">Email</option>
+          </select>
+        </div>
+      </div>
+    </div><!-- /col-sm-6 -->
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <input type="text" name="claim[address]" class="required form-control" placeholder="Address">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <input type="text" name="claim[city]" class="required form-control" placeholder="City">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <input type="text" name="claim[state]" class="required form-control" placeholder="State">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <input type="text" name="claim[zipcode]" class="required form-control" placeholder="Zipcode">
+      </div>
+    </div><!-- /col-sm-6 -->
+  </div><!-- /row -->
+</div>
+
+<script type="text/javascript">
+  function moveToStep2(){
+    $('#step2').show();
+    $('#step1').hide();
+    $('#step3').hide();
+  }
+</script>

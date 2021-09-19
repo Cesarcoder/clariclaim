@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'home#index'
+  get '/checkout', to: 'home#checkout'
+  get '/additional_info', to: 'home#additional_info'
 
   get '/revamp', to: 'home#revamp'
 end

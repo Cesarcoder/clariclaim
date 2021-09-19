@@ -5,6 +5,7 @@ class ZohoDealCreator
     # find contact by first name and last name
     zoho_service = ZohoService.new
     contact = zoho_service.find_contact(params[:first_name], params[:last_name], oauth_token)
+    contact_id = contact && contact['data'] ? contact['data'].first['id'] : 1
     deal_params = {
       data:[{
         First_Name: params[:first_name],
@@ -17,7 +18,7 @@ class ZohoDealCreator
         Type: params[:loss_type], # required field
         Pipeline: 'Standard (Standard)', # required field
         Stage: 'Prospect', # required field
-        Contact: contact['data'].first['id'], # required field
+        Contact: contact_id, # required field
         City: params[:city],
         State: params[:state],
         Address: params[:address],
