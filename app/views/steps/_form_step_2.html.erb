@@ -3,23 +3,23 @@
 
     <div class="col-lg-10">
       <div class="form-group select">
-        <label>Insurance Estimate<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
+        <label>Insurance Estimate(*)<br><small>(Files accepted: .pdf - Max file size: 25Mb)</small></label>
         <div class="fileupload">
-          <input id="insurance_estimate" type="file" name="claim[insurance_estimate]" accept="application/pdf" onchange="parsePdf()" required>
+          <input id="insurance_estimate" type="file" name="claim[insurance_estimate]" accept="application/pdf" onchange="parsePdf()" class="required">
         </div>
       </div>
 
       <div class="form-group select">
-        <label>Date of Loss</label>
+        <label>Date of Loss(*)</label>
         <div class="form-group">
-          <input type="date" id="loss_date" name="claim[loss_date]" max="<%= Date.today %>"  class="form-control" required>
+          <input type="date" id="loss_date" name="claim[loss_date]" max="<%= Date.today %>"  class="form-control required">
         </div>
       </div>
 
       <div class="form-group select">
         <div class="styled-select">
           <select class="required" name="claim[property_type]">
-            <option value="" selected>Property Type</option>
+            <option value="" selected>Property Type(*)</option>
             <option value="Single family">Single family</option>
             <option value="Multifamily">Multifamily</option>
             <option value="Condo">Condo</option>
@@ -42,7 +42,7 @@
 
       <div class="form-group select">
         <div class="form-group">
-          <input type="text" id="loss_location_start" name="claim[loss_location_start]" class="form-control" required placeholder="Where did the loss start?">
+          <input type="text" id="loss_location_start" name="claim[loss_location_start]" class="form-control required" placeholder="Where did the loss start?(*)">
         </div>
       </div>
 
@@ -54,9 +54,9 @@
       </div>
 
       <div class="form-group select">
-        <label>Was there damage outside of what your insurance company reported?</label>
+        <label>Was there damage outside of what your insurance company reported?(*)</label>
         <div class="styled-select">
-          <select class="required" id="damage_outside_insurance" name="claim[damage_outside_insurance]" onchange="showSuplemenClaim()" placeholder='Was there damage outside of what your insurance company reported?'>
+          <select class="required" id="damage_outside_insurance" name="claim[damage_outside_insurance]" onchange="showSuplemenClaim()">
             <option value="" selected>Select</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -67,7 +67,7 @@
   </div><!-- /row-->
 
   <button type="button" name="backward" class="backward step2" onclick="moveToStep1()">Backward</button>
-  <button type="submit" name="process" class="submit">Submit</button>
+  <button type="submit" name="process" class="submit" id="submit">Submit</button>
 </div>
 
 <script type="text/javascript">
@@ -81,4 +81,22 @@
     $('#step2').hide();
     $('#step3').show();
   }
+  document.getElementById("submit").onclick = function(e) {
+    let allAreFilled = true;
+    document.getElementById("step2").querySelectorAll(".required").forEach(function(i) {
+      if (!allAreFilled) return;
+      if (!i.value) allAreFilled = false;
+      if (i.type === "radio") {
+        let radioValueCheck = false;
+        document.getElementById("step2").querySelectorAll(`[name=${i.name}]`).forEach(function(r) {
+          if (r.checked) radioValueCheck = true;
+        })
+        allAreFilled = radioValueCheck;
+      }
+    })
+    if (!allAreFilled) {
+      alert('Fill all the fields');
+    }
+    e.stopPropagation();
+  };
 </script>

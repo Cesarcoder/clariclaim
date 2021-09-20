@@ -1,10 +1,10 @@
 <div class="step" id="step1">
   <label>Get started in minutes, fill out the form</label>
   <div class="form-group">
-    <input type="text" name="claim[full_name]" class="required form-control" placeholder="Full Name">
+    <input type="text" name="claim[full_name]" class="required form-control" placeholder="Full Name(*)">
   </div>
   <div class="form-group">
-    <input type="email" name="claim[email]" class="required form-control" placeholder="Email">
+    <input type="email" name="claim[email]" class="required form-control" placeholder="Email(*)">
   </div>
   <div class="form-group select">
     <div class="styled-select">
@@ -24,7 +24,7 @@
   </div>
 
   <div class="form-group">
-    <input type="text" id="loss_location" name="claim[loss_location]" class="required form-control" placeholder="Enter your loss location here">
+    <input type="text" id="loss_location" name="claim[loss_location]" class="required form-control" placeholder="Enter your loss location here(*)">
     <input type="hidden" id="loss_location_point" name="claim[loss_location_point]" value="">
     <input type="hidden" id="loss_location_meta" name="claim[loss_location_meta]" value="{}">
   </div>
@@ -52,9 +52,26 @@
 
 <script type="text/javascript">
   function moveToStep2() {
-    $('#step1').hide();
-    $('#step2').show();
-    $('#step3').hide();
+    let allAreFilled = true;
+    document.getElementById("step1").querySelectorAll(".required").forEach(function(i) {
+      if (!allAreFilled) return;
+      if (!i.value) allAreFilled = false;
+      if (i.type === "radio") {
+        let radioValueCheck = false;
+        document.getElementById("myForm").querySelectorAll(`[name=${i.name}]`).forEach(function(r) {
+          if (r.checked) radioValueCheck = true;
+        })
+        allAreFilled = radioValueCheck;
+      }
+    })
+    if (!allAreFilled) {
+      alert('Fill all the fields');
+    }
+    else {
+      $('#step1').hide();
+      $('#step2').show();
+      $('#step3').hide();
+    }
   }
   function initAutocomplete() {
     lossLocationField = document.querySelector("#loss_location");
