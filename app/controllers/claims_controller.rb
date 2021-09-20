@@ -14,7 +14,7 @@ class ClaimsController < ApplicationController
 
     respond_to do |format|
       if @claim.save
-        ZohoClaimCreator.new.perform(claim_params)
+        ZohoClaimCreator.new.perform(tparams)
         @claim.update_columns(
           addons_data: addons_params,
           loss_location_meta: loss_location_meta_params
@@ -151,6 +151,6 @@ class ClaimsController < ApplicationController
     end
 
     def domain
-      Rails.env.production? ? 'http://34.134.75.48/' : 'http://localhost:3000/'
+      Rails.env.production? ? 'https://clariclaim.com/' : 'http://localhost:3000/'
     end
 end
